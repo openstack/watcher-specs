@@ -11,7 +11,7 @@ Watcher Decision Engine should query metrics from the Ceilometer V2 API
 https://blueprints.launchpad.net/watcher/+spec/telemetry-integration
 
 Watcher Decision Engine must query metrics from the Ceilometer V2 API to allow
-an easiest integration with OpenStack services (especially devstack).
+an easiest integration with OpenStack services (especially DevStack).
 
 Telemetry used to be the initial name of the Ceilometer project. Now, the
 following projects are managed by the Telemetry team:
@@ -34,12 +34,19 @@ the metrics necessary for the optimization algorithm.
 Use Cases
 ----------
 
-This will address any use case where Watcher needs to be used for optimizing
-an OpenStack cluster where Telemetry is being used for collecting metrics and
-where the operators do not want to install any other metering chain.
+As a developer.
+I want to be able, in my optimization strategies, to request metrics collected
+by Telemetry services.
+So that I can develop and run audits on an official DevStack release
+(Kilo and above) just by enabling the Telemetry services.
 
-It will impact every developer that has already developed an optimization
-strategy in the Watcher project.
+As an operator with an admin role.
+I want to be able to launch audits on data-centers where compute and storage
+resources are managed by any Openstack controller deployed with version Kilo
+and above.
+So that I can optimize the resources of the data-center which I am responsible
+of without the need to install a metering chain which is not in an official
+release of the core modules.
 
 Project Priority
 -----------------
