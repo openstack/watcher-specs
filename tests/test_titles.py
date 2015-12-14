@@ -81,6 +81,8 @@ class TestTitles(testtools.TestCase):
                 code_block = True
             if "http://" in line or "https://" in line:
                 continue
+            if line.startswith("..") and "image::" in line:
+                continue
             # Allow lines which do not contain any whitespace
             if re.match("\s*[^\s]+$", line):
                 continue
