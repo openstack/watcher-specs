@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="63cm" height="20cm" viewBox="44 44 1245 385" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #fad21b" x="46" y="46" width="1242" height="382"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="46" y="46" width="1242" height="382"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="667" y="240.9">
+      <tspan x="667" y="240.9"></tspan>
+    </text>
+  </g>
+  <text font-size="15.4545" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="63.6" y="73.45">
+    <tspan x="63.6" y="73.45">Functional Need</tspan>
+  </text>
+  <g>
+    <polygon style="fill: #ffc0cb" points="209,220 338.2,220 350.2,232 350.2,254 209,254 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="209,220 338.2,220 350.2,232 350.2,254 209,254 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="338.2,220 338.2,232 350.2,232 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="216" y="244.9">
+      <tspan x="216" y="244.9">Watcher Strategy</tspan>
+    </text>
+  </g>
+  <g>
+    <polygon style="fill: #ffc0cb" points="550.6,220.1 672.1,220.1 684.1,232.1 684.1,254.1 550.6,254.1 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="550.6,220.1 672.1,220.1 684.1,232.1 684.1,254.1 550.6,254.1 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="672.1,220.1 672.1,232.1 684.1,232.1 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="557.6" y="245">
+      <tspan x="557.6" y="245">Watcher Planner</tspan>
+    </text>
+  </g>
+  <g>
+    <polygon style="fill: #ffc0cb" points="896.6,212.1 1018.1,212.1 1030.1,224.1 1030.1,246.1 896.6,246.1 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="896.6,212.1 1018.1,212.1 1030.1,224.1 1030.1,246.1 896.6,246.1 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="1018.1,212.1 1018.1,224.1 1030.1,224.1 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="903.6" y="237">
+      <tspan x="903.6" y="237">Watcher Applier</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffb400" x="158" y="254" width="241.25" height="52" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="158" y="254" width="241.25" height="52" rx="20" ry="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="278.625" y="275.9">
+      <tspan x="278.625" y="275.9">Define and instanciate Actions</tspan>
+      <tspan x="278.625" y="291.9">for Optimization</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffb400" x="545" y="254" width="143.9" height="52" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="545" y="254" width="143.9" height="52" rx="20" ry="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="616.95" y="275.9">
+      <tspan x="616.95" y="275.9">Schedule Actions</tspan>
+      <tspan x="616.95" y="291.9">in Time</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffb400" x="898" y="246" width="135.15" height="68" rx="20" ry="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="898" y="246" width="135.15" height="68" rx="20" ry="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="965.575" y="267.9">
+      <tspan x="965.575" y="267.9">Simulate</tspan>
+      <tspan x="965.575" y="283.9">and</tspan>
+      <tspan x="965.575" y="299.9">Execute Actions</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="399.25,280 409.25,280 535,280 540.528,280 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="532.764,285 542.764,280 532.764,275 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="688.9,280 698.9,280 888,280 893.528,280 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="885.764,285 895.764,280 885.764,275 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="407" y="293.1" width="131.2" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="407" y="293.1" width="131.2" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="472.6" y="315">
+      <tspan x="472.6" y="315">List of Actions</tspan>
+      <tspan x="472.6" y="331">+</tspan>
+      <tspan x="472.6" y="347">input parameters</tspan>
+      <tspan x="472.6" y="363">+</tspan>
+      <tspan x="472.6" y="379">target resource</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="427.725" y1="318" x2="517.475" y2="318"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="467.225" y1="334" x2="477.975" y2="334"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="417" y1="350" x2="528.2" y2="350"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="467.225" y1="366" x2="477.975" y2="366"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="423.025" y1="382" x2="522.175" y2="382"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="708.6" y="293.1" width="172.6" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="708.6" y="293.1" width="172.6" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="794.9" y="315">
+      <tspan x="794.9" y="315">Actions flow description</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="718.6" y1="318" x2="871.2" y2="318"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1047.6" y="293.1" width="111.6" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1047.6" y="293.1" width="111.6" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1103.4" y="315">
+      <tspan x="1103.4" y="315">History</tspan>
+      <tspan x="1103.4" y="331">+</tspan>
+      <tspan x="1103.4" y="347">Output results</tspan>
+      <tspan x="1103.4" y="363">+</tspan>
+      <tspan x="1103.4" y="379">Events</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="1080.63" y1="318" x2="1126.18" y2="318"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="1098.03" y1="334" x2="1108.78" y2="334"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="1057.6" y1="350" x2="1149.2" y2="350"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="1098.03" y1="366" x2="1108.78" y2="366"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="1081.72" y1="382" x2="1125.07" y2="382"/>
+  </g>
+  <ellipse style="fill: #000000" cx="99" cy="280" rx="10" ry="10"/>
+  <g>
+    <ellipse style="fill: #ffffff" cx="1212" cy="280" rx="15" ry="15"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="1212" cy="280" rx="15" ry="15"/>
+    <ellipse style="fill: #000000" cx="1212" cy="280" rx="10" ry="10"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1033.15,280 1043.15,280 1185.99,280 1191.52,280 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1183.76,285 1193.76,280 1183.76,275 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="527" y="72" width="182.05" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="527" y="72" width="182.05" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="618.025" y="93.9">
+      <tspan x="618.025" y="93.9">Scheduling Policies/Rules</tspan>
+      <tspan x="618.025" y="109.9">+</tspan>
+      <tspan x="618.025" y="125.9">Rules solver</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="537" y1="96.9" x2="699.05" y2="96.9"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="612.65" y1="112.9" x2="623.4" y2="112.9"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="579.05" y1="128.9" x2="657" y2="128.9"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="787.6" y="67.1" width="351.8" height="84"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="787.6" y="67.1" width="351.8" height="84"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="963.5" y="89">
+      <tspan x="963.5" y="89">Configuration of Workflow Engine</tspan>
+      <tspan x="963.5" y="105">(implementation, persistence, ...)</tspan>
+      <tspan x="963.5" y="121">+</tspan>
+      <tspan x="963.5" y="137">Mapping between Action types and Action Handlers</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="856.15" y1="92" x2="1070.85" y2="92"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="856.575" y1="108" x2="1070.42" y2="108"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="958.125" y1="124" x2="968.875" y2="124"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="797.6" y1="140" x2="1129.4" y2="140"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="618.025,140 618.025,197 618,197 618,205.295 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="613,192.647 618,208.647 623,192.647 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="963.5,151.1 963.5,174.05 963,174.05 963,198.295 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="958,185.647 963,201.647 968,185.647 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="110.005,280 120.005,280 148,280 153.528,280 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="145.764,285 155.764,280 145.764,275 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="193.6" y="104.1" width="174.9" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="193.6" y="104.1" width="174.9" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="281.05" y="126">
+      <tspan x="281.05" y="126">Action types description</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="203.6" y1="129" x2="358.5" y2="129"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="281.05,140.1 281.05,172.55 281,172.55 281,206.295 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="276,193.647 281,209.647 286,193.647 "/>
+  </g>
+</svg>
