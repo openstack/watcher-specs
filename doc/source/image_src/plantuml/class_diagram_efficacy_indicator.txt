@@ -1,0 +1,47 @@
+@startuml
+class "Base Strategy" {
+  String goal
+  ActionPlan execute()
+}
+class "Energy Base Strategy" {
+  String goal="Reduce Energy"
+}
+class "IO Base Strategy" {
+  String goal="Reduce Disk IO"
+}
+class "Network Bandwidth Base Strategy" {
+  String goal="Reduce Network Bandwidth"
+}
+class IndicatorSpecification {
+  String name
+  String description
+  String type
+  String unit
+  String valueRange
+  boolean isMandatory = true
+}
+class EnergyEfficacySpecification {
+  ArrayList : IndicatorSpecification[] indicatorsDescription
+  boolean checkEfficacyIndicators(ActionPlan)
+  Object getGlobalEfficacy(ActionPlan)
+}
+class Efficacy {
+  HashMap : IndicatorValue[] indicators
+}
+class IndicatorValue {
+  String name
+  Object value
+}
+"Base Strategy" <|-- "IO Base Strategy"
+"Base Strategy" <|-- "Energy Base Strategy"
+"Base Strategy" <|-- "Network Bandwidth Base Strategy"
+"Energy Base Strategy" <|-- "Energy Strategy A"
+"Energy Base Strategy" <|-- "Energy Strategy B"
+"Energy Base Strategy" <|-- "Energy Strategy C"
+"Energy Base Strategy" --> "EnergyEfficacySpecification"
+EnergyEfficacySpecification "1" *-- "many" IndicatorSpecification
+"Base Strategy" ..> ActionPlan : generates
+ActionPlan --> Efficacy
+Efficacy "1" *-- "many" IndicatorValue
+@enduml
+
