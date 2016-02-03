@@ -19,8 +19,6 @@ This blueprint aims at providing a generic and dynamic system for adding new
 Optimization actions that can be used in one or several Strategies to reach
 the Goal_(s) of an `Audit`_.
 
-.. _problem_description:
-
 Problem description
 ===================
 
@@ -214,7 +212,7 @@ Estimated changes are going to be in the following places:
 
 * in the `Watcher Applier`_
 
-As described in the :ref:`Problem description <problem_description>`, Watcher
+As described in the `Problem description`_, Watcher
 should integrate a new Task/Flow management system which provides a clear
 separation between the three main phases:
 
