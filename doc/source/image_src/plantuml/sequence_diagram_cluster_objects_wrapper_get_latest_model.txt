@@ -1,0 +1,61 @@
+@startuml
+skinparam maxMessageSize 100
+
+== Initialization ==
+
+actor "Administrator"
+
+"Administrator" -> "Decision Engine" : Start all services
+create "Background Task Scheduler"
+"Decision Engine" -> "Background Task Scheduler" : Start
+
+create "Collector Manager"
+"Background Task Scheduler" -> "Collector Manager"\
+: Sync all models
+create "Cluster Model Collector Loader"
+"Collector Manager" -> "Cluster Model Collector Loader"\
+: Get list of cluster data model collector instances
+"Cluster Model Collector Loader" -> "Collector Manager"\
+: List of cluster data model collector instances
+
+loop for every available cluster data model collector (including Nova)
+    "Background Task Scheduler" -> "Background Task Scheduler"\
+    : Create initial synchronization job for (e.g. Nova)
+    create "Nova Cluster Data Model Collector"
+    "Background Task Scheduler" -[#blue]> "Nova Cluster Data Model Collector"\
+    : [async] trigger initial synchronization job
+    activate "Nova Cluster Data Model Collector"
+    "Nova Cluster Data Model Collector" -> "Nova API"\
+    : Fetch needed data to build the cluster data model
+    "Nova API" -> "Nova Cluster Data Model Collector" : Needed data
+    "Nova Cluster Data Model Collector" -> "Nova Cluster Data Model Collector"\
+    : Build an in-memory cluster data model
+    deactivate "Nova Cluster Data Model Collector"
+end
+
+== When executing a strategy ==
+
+create "Strategy"
+"Administrator" -> "Strategy" : Trigger audit which then executes a strategy
+
+"Strategy" -> "Collector Manager" : Get the latest 'nova' cluster data model
+activate "Collector Manager"
+
+"Collector Manager" -> "Cluster Model Collector Loader"\
+: Find the plugin named 'nova'
+"Cluster Model Collector Loader" -> "Collector Manager"\
+: Nova Cluster Data Model Collector
+
+"Collector Manager" -> "Nova Cluster Data Model Collector"\
+: Get the latest Nova cluster data model
+activate "Nova Cluster Data Model Collector"
+"Nova Cluster Data Model Collector" -> "Collector Manager"\
+: Copy of in-memory model
+deactivate "Nova Cluster Data Model Collector"
+
+"Collector Manager" -> "Strategy" : Nova in-memory cluster data model
+deactivate "Collector Manager"
+
+]o<- "Strategy" : Done
+
+@enduml
