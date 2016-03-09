@@ -47,6 +47,9 @@ Use Cases
 As a Cloud Administrator_, I want to manage the size of the Watcher database by
 purging all soft-deleted objects.
 
+As a Cloud Administrator_, I want to manage the size of the Watcher database by
+purging all soft-deleted objects, apart from orphans objects.
+
 As a Cloud Administrator, I should be able to purge a subset of the Watcher
 objects from the database by providing a validity interval as an argument (in
 days) which shall not be destroyed. (e.g. I want to delete objects older than
@@ -64,6 +67,9 @@ As a Cloud Administrator, I would like to get, as result, a detailed summary
 of the purge operation (i.e. the total number of deleted objects, the number
 of deleted Audit Templates, the number of deleted Audits_, the number of
 deleted `Action Plans`_, the number of deleted Actions_).
+
+As a Cloud Administrator, I would like to execute purge command in dry-run
+mode, for which objects selected for deletion will be not purged.
 
 As a Developer, when an Audit template object is removed, all linked Audit
 objects shall be removed.
@@ -174,6 +180,7 @@ Testing
 Add these functional tests :
 
 * I purge all objects marked as DELETED.
+* I purge all objects marked as DELETED, apart from orphan ones.
 * I purge all objects marked as DELETED, in a maximum limit of M objects.
 * I purge all objects marked as DELETED and linked to a dedicated Audit
   Template
@@ -186,6 +193,8 @@ Add these functional tests :
   a dedicated Audit Template.
 * I purge all objects marked as DELETED, older than N days and linked to
   a dedicated Audit Template, in a maximum limit of M objects.
+* I run a dry-run purge to check which objects would be purged, according to
+  my settings.
 
 For all of these tests, we should be able to validate integrity of remaining
 objects (no orphans, no partial group of objects linked to a same parent).
