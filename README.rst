@@ -6,10 +6,10 @@ Watcher Specifications
 ======================
 
 
-This git repository is used to hold approved design specifications for additions
-to the Watcher project.  Reviews of the specs are done in gerrit, using a
-similar workflow to how we review and merge changes to the code itself. For
-specific policies around specification review, refer to the end of this
+This git repository is used to hold approved design specifications for
+additions to the Watcher project.  Reviews of the specs are done in gerrit,
+using a similar workflow to how we review and merge changes to the code itself.
+For specific policies around specification review, refer to the end of this
 document.
 
 The layout of this repository is::
@@ -112,11 +112,15 @@ was previously approved but not implemented (or not completely implemented),
 then you must seek re-approval for the specification. You can re-propose your
 specification by doing the following:
 
-* Copy (not move) your specification to the right directory for the current release.
+* Copy (not move) your specification to the right directory for the current
+  release.
 * Update the document to comply with the new template.
-* If there are no functional changes to the specification (only template changes) then add the `Previously-approved: <release>` tag to your commit message.
+* If there are no functional changes to the specification (only template
+  changes) then add the `Previously-approved: <release>` tag to your commit
+  message.
 * Send for review.
-* watcher-specs-core will merge specifications which meet these requirements with a single +2.
+* watcher-specs-core will merge specifications which meet these requirements
+  with a single +2.
 
 Specifications which depend on merging code in other OpenStack projects
 -----------------------------------------------------------------------

@@ -27,7 +27,8 @@ Here you can find the specs, and spec template, for each release:
 
    specs/mitaka/index
 
-There are also some approved backlog specifications that are looking for owners:
+There are also some approved backlog specifications that are looking for
+owners:
 
 .. toctree::
    :glob:
