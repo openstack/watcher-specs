@@ -1,0 +1,35 @@
+@startuml
+class "Base Strategy" {
+  String goal_id
+  String goal_display_name
+  String strategy_id
+  String strategy_display_name
+  Solution execute()
+}
+class "Energy Base Strategy" {
+  String goal_id="REDUCE_ENERGY"
+  String goal_display_name="Reduce Energy"
+}
+class "IO Base Strategy" {
+  String goal_id="REDUCE_DISK_IO"
+  String goal_display_name="Reduce Disk IO"
+}
+class "Network Bandwidth Base Strategy" {
+  String goal_id="REDUCE_NETWORK_BANDWIDTH"
+  String goal_display_name="Reduce Network Bandwidth"
+}
+class "Energy Strategy A" {
+  String strategy_id="ENERGY_STRATEGY_A"
+  String strategy_display_name="Energy Strategy A"
+}
+class "Energy Strategy B" {
+  String strategy_id="ENERGY_STRATEGY_B"
+  String strategy_display_name="Energy Strategy B"
+}
+"Base Strategy" <|-- "IO Base Strategy"
+"Base Strategy" <|-- "Energy Base Strategy"
+"Base Strategy" <|-- "Network Bandwidth Base Strategy"
+"Energy Base Strategy" <|-- "Energy Strategy A"
+"Energy Base Strategy" <|-- "Energy Strategy B"
+"Base Strategy" ..> Solution : generates
+@enduml
