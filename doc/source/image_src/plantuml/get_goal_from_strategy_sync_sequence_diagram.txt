@@ -1,0 +1,27 @@
+@startuml
+actor "Watcher Decision Engine"
+actor "Watcher DB"
+
+"Watcher Decision Engine" -> "Watcher Decision Engine" : start service
+
+group Sync
+
+    "Watcher Decision Engine" -> "Watcher Decision Engine" :\
+discover the resources (goals + strategies)
+    "Watcher Decision Engine" -> "Watcher DB" :\
+fetch current database states (goals and strategies)
+    "Watcher Decision Engine" <-- "Watcher DB" : OK
+    "Watcher Decision Engine" -> "Watcher Decision Engine" :\
+Compare / Check for updates
+    "Watcher Decision Engine" -> "Watcher DB" :\
+Create new goals/strategies DB entries if changed
+    "Watcher Decision Engine" <-- "Watcher DB" : OK
+    "Watcher Decision Engine" -> "Watcher DB" :\
+Soft delete deprecated goals and strategies
+    "Watcher Decision Engine" <-- "Watcher DB" : OK
+    "Watcher Decision Engine" -> "Watcher DB" :\
+Update audit template superseded goal_id and strategy_id \
+foreign keys if necessary
+    "Watcher Decision Engine" <-- "Watcher DB" : OK
+end
+@enduml
