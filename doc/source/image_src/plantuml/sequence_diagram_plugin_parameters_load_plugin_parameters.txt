@@ -1,0 +1,13 @@
+@startuml
+
+"Caller" -> "Default Loader" : Load plugin given <namespace> and <plugin>
+"Default Loader" -> "stevedore" : Find plugin entry point with given \
+<namespace> and <plugin>
+"stevedore" -> "Default Loader" : Return //Loadable// class
+
+"Default Loader" -> "Config file parser" : Load plugin configuration opts
+"Default Loader" <-- "Config file parser" : Return list of opts
+"Default Loader" -> "Caller" : Return instantiated plugin \
+with its configuration
+
+@enduml

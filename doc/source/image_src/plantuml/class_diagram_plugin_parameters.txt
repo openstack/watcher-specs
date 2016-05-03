@@ -1,0 +1,54 @@
+@startuml
+
+class "Base Loader" {
+    {abstract} Loadable load(String name)
+    {abstract} HashMap<String, Loadable> list_available()
+}
+
+class "Default Loader" {
+    Loadable load(String name)
+    HashMap<String, Loadable> list_available()
+}
+
+class Loadable {
+  {abstract} {static} oslo_config.cfg.Opt[] get_config_opts()
+}
+
+class "Base Strategy" {
+  {static} oslo_config.cfg.Opt[] get_config_opts()
+  {abstract} {static} String get_name()
+  {abstract} {static} String get_display_name()
+  {abstract} {static} String get_translatable_display_name()
+  {abstract} {static} String get_goal_name()
+  {abstract} {static} String get_goal_display_name()
+  {abstract} {static} String get_translatable_goal_display_name()
+  {abstract} Solution execute()
+}
+
+class "Base Action" {
+  {static} oslo_config.cfg.Opt[] get_config_opts()
+  {abstract} execute()
+  {abstract} revert()
+  {abstract} precondition()
+  {abstract} postcondition()
+}
+
+class "Base Planner" {
+  {static} oslo_config.cfg.Opt[] get_config_opts()
+  {abstract} ActionPlan schedule()
+}
+
+class "Base WorkflowFlow Engine" {
+  {static} oslo_config.cfg.Opt[] get_config_opts()
+  {abstract} execute()
+}
+
+"Base Loader" <|-- "Default Loader"
+"Default Loader" ..> Loadable : " Loads"
+
+"Loadable" <|-- "Base Strategy"
+"Loadable" <|-- "Base Action"
+"Loadable" <|-- "Base Planner"
+"Loadable" <|-- "Base WorkflowFlow Engine"
+
+@enduml
