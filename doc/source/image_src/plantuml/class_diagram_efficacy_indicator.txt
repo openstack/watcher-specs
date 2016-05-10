@@ -1,36 +1,47 @@
 @startuml
 class "Base Strategy" {
-  String goal
-  ActionPlan execute()
+  #Goal _goal
+  #Solution _solution
+  #String _name
+  #String _display_name
+  #boolean _pre_execute()
+  #boolean _do_execute()
+  #boolean _post_execute()
+  +String get_name()
+  +String get_display_name()
+  +String get_goal_name()
+  +String get_goal_display_name()
+  +Solution execute()
+}
+class Goal {
+    +String get_name()
+    +String get_display_name()
 }
 class "Energy Base Strategy" {
-  String goal="Reduce Energy"
 }
 class "IO Base Strategy" {
-  String goal="Reduce Disk IO"
 }
 class "Network Bandwidth Base Strategy" {
-  String goal="Reduce Network Bandwidth"
 }
 class IndicatorSpecification {
-  String name
-  String description
-  String type
-  String unit
-  String valueRange
-  boolean isMandatory = true
+  -String _name
+  -String _description
+  -String _type
+  -String _unit
+  -String _value_range
+  -boolean _is_mandatory = true
 }
 class EnergyEfficacySpecification {
-  ArrayList : IndicatorSpecification[] indicatorsDescription
-  boolean checkEfficacyIndicators(ActionPlan)
-  Object getGlobalEfficacy(ActionPlan)
+  -Dictionary : IndicatorSpecification[] _indicators_description
+  +boolean check_efficacy_indicators(Solution)
+  +Object get_global_efficacy(Solution)
 }
 class Efficacy {
-  HashMap : IndicatorValue[] indicators
+  -Dictionary : IndicatorValue[] _indicators
 }
 class IndicatorValue {
-  String name
-  Object value
+  -String _name
+  -Object _value
 }
 "Base Strategy" <|-- "IO Base Strategy"
 "Base Strategy" <|-- "Energy Base Strategy"
@@ -38,10 +49,12 @@ class IndicatorValue {
 "Energy Base Strategy" <|-- "Energy Strategy A"
 "Energy Base Strategy" <|-- "Energy Strategy B"
 "Energy Base Strategy" <|-- "Energy Strategy C"
-"Energy Base Strategy" --> "EnergyEfficacySpecification"
+Goal --> "EnergyEfficacySpecification" : is evaluated with
 EnergyEfficacySpecification "1" *-- "many" IndicatorSpecification
-"Base Strategy" ..> ActionPlan : generates
-ActionPlan --> Efficacy
+"Base Strategy" --> Solution : generates
+Solution --> Efficacy
 Efficacy "1" *-- "many" IndicatorValue
+"Base Strategy" --> Goal : achieves
+note top of "Energy Base Strategy" : In this base class, get_goal_name() \
+\nreturns "REDUCE_ENERGY".
 @enduml
-
