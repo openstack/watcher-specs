@@ -1,0 +1,31 @@
+@startuml
+
+class "Goal" {
+    int id (primary key)
+    String uuid (unique constraint)
+    String name (not null)
+    String display_name (not null)
+}
+
+class "Strategy" {
+    int id (primary key)
+    String uuid (unique constraint)
+    String name (not null)
+    String display_name (not null)
+    String goal_id (foreign key)
+}
+
+class "Audit Template" {
+    int id (primary key)
+    String uuid (unique constraint)
+    String name (not null)
+    String goal_id (foreign key)
+    String strategy_id (optional foreign key)
+}
+
+Strategy "0" *-- "*" Goal
+
+"Audit Template" "1" *-- "1" Goal
+"Audit Template" "0" *-- "1" Strategy
+
+@enduml

@@ -75,6 +75,36 @@ In the future, it will also enable Watcher strategies to provide other common
 attributes and methods for a given goal (input parameters, efficacy indicators,
 ...).
 
+
+The synchronization of goals consists in establishing
+data consistency between goals and strategies
+automatically found by the `DefaultLoader` class
+via the function `list_available` to then applying the changes in
+the `Watcher database`_.
+Harmonization of the goals over time should be automatically performed
+by the decision_engine during start.
+We should create a `Synchronizer` class which compares records
+in `Watcher database`_  with those found by the `DefaultLoader`.
+Then, altered goals and strategies will be replaced in order to establish
+identity between the entry points and the `Watcher database`_.
+As a result of the synchronization, all the available goals
+and strategies are updated.
+The synchronization is required for two main reasons.
+The first reason is that we don't want a strong coupling between
+the Watcher API component and the Watcher Decision Engine component.
+In fact, we want the watcher-api only interact with `Watcher database`_
+and the message broker.
+The synchronization avoids the watcher cli having to call the watcher-api
+which would then have to call the watcher-decision-api,
+which is in charge of listing the resources.
+The second one is performance and HA.
+
+Below the strategy class and sequence diagram for syncing the goals.
+
+.. image:: ../../../doc/source/images/get_goal_from_strategy_class_diagram.png
+   :width: 140%
+
+
 Alternatives
 ------------
 
@@ -85,10 +115,45 @@ Data model impact
 -----------------
 
 The list of available goals should be stored in the `Watcher database`_.
-Therefore a new table should be created in the database for this.
-
 For each goal, the list of available strategies should also be stored in the
 `Watcher database`_. A new table should be created in the database for this.
+Therefore a new table should be created in the database for this.
+The proposed modification in the `Watcher database`_.
+is illustrated on the diagram below:
+
+.. image:: ../../../doc/source/images/get_goal_from_strategy_class_diagram.png
+   :width: 140%
+
+In the audit_template object, the 'strategy' attribute is optional.
+If the admin wants to force the trigger of a `Strategy`_ it could
+specify the `Strategy`_ uuid in the `Audit Template`_.
+There may be several strategies applying for a given optimization `Goal`_.
+If the admin didn't specify a `Strategy`_, the watcher strategy
+selector is responsible for selecting an appropriate
+one given the provided `Goal`_.
+This blueprint should reuse the ``DefaultStrategySelector`` class
+that is currently responsible for selecting the strategy.
+This selection of the strategy is complex but likely
+outside the scope of this blueprint (`watcher-strategy-selector`_).
+However, we need to provide a basic/minimum strategy selector.
+So, the strategy selector will select the first available strategy
+for a given goal.
+In the future, we plan have a more complex strategy selector
+that would be able to select the strategy depending on many
+parameters such as the usage of infrastructure, workloads, etc.
+
+The soft delete is a commonly-used pattern and cascading must be
+implemented in order to maintain integrity.
+If a strategy is deleted, we need to update every audit
+template linked to this strategy and setting
+the strategy id to None. So the audit template can still achieve the same
+goal but with a different strategy.
+However, if we delete a goals we didn't plan to maintain the integrity
+as it is outside the scope of this blueprint (`soft-delete-goals`_)
+
+Note: The id attribute is used by oslo.db to handle the soft_delete feature.
+
+
 
 REST API impact
 ---------------
@@ -190,6 +255,9 @@ Assignee(s)
 Primary assignee:
   vincent-francoise
 
+Other contributors:
+jed56
+
 Work Items
 ----------
 
@@ -286,3 +354,5 @@ None
 .. _Watcher Decision Engine: https://factory.b-com.com/www/watcher/doc/watcher/architecture.html#watcher-decision-engine
 .. _Watcher database: https://factory.b-com.com/www/watcher/doc/watcher/architecture.html#watcher-database
 .. _blueprint optimization-threshold: https://blueprints.launchpad.net/watcher/+spec/optimization-threshold
+.. _watcher-strategy-selector: https://blueprints.launchpad.net/watcher/+spec/watcher-strategy-selector
+.. _soft-delete-goals: https://blueprints.launchpad.net/watcher/+spec/soft-delete-goals
