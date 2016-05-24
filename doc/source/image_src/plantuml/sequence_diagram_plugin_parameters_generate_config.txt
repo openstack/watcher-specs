@@ -1,0 +1,23 @@
+@startuml
+
+"Config file generator" -> "Watcher" : list all opts
+"Watcher" ->  "Watcher" : Retrieve builtin opts
+"Watcher" ->  "Watcher" : Retrieve builtin opts
+
+group Retrieve plugin opts
+
+  loop over each plugin loader
+    "Watcher" -> "Default Loader" : list available plugins
+
+    loop over each available plugin
+        "Default Loader" -> "Loadable" : Retrieve its config opts \
+(//get_config_opts()//)
+    end
+  end
+  "Default Loader" -> "Watcher" : Return plugin opts list
+end
+
+"Watcher" -> "Watcher" : Combine builtin opts and builtin opts
+"Config file generator" <-- "Watcher" : Return combined opts list
+
+@enduml
