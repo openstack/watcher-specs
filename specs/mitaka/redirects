@@ -1,6 +1,5 @@
 approved/telemetry-integration.rst ../implemented/telemetry-integration.rst
 approved/db-purge-engine.rst ../implemented/db-purge-engine.rst
-approved/define-the-audit-scope.rst ../implemented/define-the-audit-scope.rst
 approved/outlet-temperature-based-strategy.rst ../implemented/outlet-temperature-based-strategy.rst
 approved/watcher-add-actions-via-conf.rst ../implemented/watcher-add-actions-via-conf.rst
 approved/workload-balance-migration-strategy.rst ../implemented/workload-balance-migration-strategy.rst
