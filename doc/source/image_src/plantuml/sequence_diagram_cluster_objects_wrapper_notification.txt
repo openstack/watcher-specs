@@ -1,0 +1,46 @@
+@startuml
+skinparam maxMessageSize 100
+
+actor "Administrator"
+
+== Initialization ==
+
+"Administrator" -> "Decision Engine" : Start
+create "Event Notification Endpoint"
+"Decision Engine" -> "Event Notification Endpoint" : Initialize
+
+create "Notification Handler Manager"
+"Event Notification Endpoint" -> "Notification Handler Manager"\
+: Initialize
+
+create "Nova Notification Handler"
+"Notification Handler Manager" -> "Nova Notification Handler"\
+: Initialize
+
+== Upon receiving an event ==
+
+[-> "Event Notification Endpoint" : Incoming Nova Notification
+
+"Event Notification Endpoint" -[#blue]> "Notification Handler Manager"\
+: [async] dispatch based on the event type (e.g. 'compute.*')
+
+hnote over "Event Notification Endpoint" : Idle
+
+"Notification Handler Manager" ->  "Nova Notification Handler"\
+: handle notification
+
+activate "Nova Notification Handler"
+"Nova Notification Handler" ->  "Nova Notification Handler"\
+: parse notification
+"Nova Notification Handler" ->  "Nova Cluster Data Model"\
+: update the in-memory model given the parsed notification
+activate "Nova Cluster Data Model"
+loop visit all resources
+    "Nova Cluster Data Model" ->  "Resource"\
+    : visit given the parsed notification (visitor pattern)
+end
+]o<-- "Nova Cluster Data Model" : Done
+deactivate "Nova Cluster Data Model"
+
+deactivate "Nova Notification Handler"
+@enduml
