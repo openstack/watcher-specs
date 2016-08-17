@@ -69,49 +69,56 @@ an array of resource uuid(s):
 ::
 
   "scope": [
-            {"OS::Nova::HostAggregate": [
-              {"id": "2ba3ba40-c377-11e5-9912-ba0be0483c18"},
-              {"id": "3eb70308-cabc-f1e5-7652-ba0be0483c18"},
-              {"id": "30f3cc36-1fcc-4230-8907-042cdc4d4f75"}
+            {"host_aggregates": [
+                {"id": "1"},
+              {"id": "2"},
+              {"id": "3"}
             ]},
-            {"OS::Cinder::Volume": [
-              {"id": "25a145d1-a9bc-4e08-afe0-d9cd3a864a26"},
-              {"id": "ddac9f1b-0666-47d8-a49b-3be89fc14a24"}
+            {"availability_zones": [
+              {"name": "AZ1"},
+              {"name": "AZ2"}
+            ]},
+            {"exclude": [
+              {"instances": [
+                {"uuid": "9766dff1-3c81-4de2-92ae-19e0d9adcec6"},
+                {"uuid": "777541bb-ce4f-4bf3-8320-d5792d5cdf6e"}
+              ]},
+              {"compute_nodes": [
+                {"name": "compute1"}
+              ]}
             ]}
           ]
 
-For consistency with the other OpenStack services, the resource type can be any
-type belonging to the list provided in the Heat orchestration project and
-Watcher will use the same naming as Heat:
-http://docs.openstack.org/developer/heat/template_guide/openstack.html
-
-The advantage of using this naming conventions for resource types is that it
-enables Watcher to know which OpenStack service is in charge of a given type of
-resource (Nova, Neutron,...).
+We can exclude instances and compute nodes from listed AZ and HA
+to prevent them from migrations caused by Watcher.
 
 It should be possible to indicate all resources of a given type by using some
 wildcard character, instead of an array of specific UUIDs. For example, to
-select all Nova compute nodes and all Cinder volumes, the scope would be
+select all Nova host aggregates and all availability zones, the scope would be
 defined like this:
 
 ::
 
   "scope": [
-            {"OS::Nova::Server": [
+            {"host_aggregate": [
               {"id": "*"}
             ]},
-            {"OS::Cinder::Volume": [
-              {"id": "*"}
+            {"availability_zone": [
+              {"name": "*"}
             ]}
           ]
 
-When a scope is created or updated, all the resource UUIDs are verified in
-order to make sure that the resource exists and can be handled by the strategy
-associated to the `Goal`_ of the `Audit Template`_.
+When a scope is created or updated, all the resources such as host_aggregates
+and availability_zones are verified in order to make sure that the resource
+exists. The following module is used for defining audit scope:
 
-There should also be a periodic task which regularly checks the validity of
-all the audit scopes. If a resource UUID does not exist any more, a warning
-should be added to the Watcher logs.
+* Scope default module (decision_engine/scope/default.py). This module should
+  contain the method that will check whether scope is valid or not. If scope
+  is valid, the latest cluster data model should be copied and modified
+  according to the scope's content. The resulting copy is a subset
+  of the original cluster data model that can be used in Watcher strategy
+  afterwards. If some of provided resources are not available,
+  the warning message should be added to the logs.
 
 Estimated changes are going to be in the following places:
 
@@ -148,12 +155,12 @@ There will be an impact on every REST resource URLs that starts with
 * PATCH /v1/audit_template
 * GET /v1/audit_template/detail
 
-The type **AuditTemplate** will contain a new **Scope** object with an array
+The type **AuditTemplate** will contain a new **Scope** field with an array
 of resource types and for each resource type, an array of resource uuid(s).
 
 Here is a sample of the new JSON payload for an audit template which includes
-the **Scope** object composed of three Nova Host Aggregates and two Cinder
-volumes:
+the **Scope** json composed of three Nova Host Aggregates, two Availability
+Zones and some objects to exclude:
 
 ::
 
@@ -165,27 +172,40 @@ volumes:
           "automatic": true
       },
       "goal": "MINIMIZE_ENERGY",
-      "scope": [
-        {"OS::Nova::HostAggregate": [
-        {"id": "2ba3ba40-c377-11e5-9912-ba0be0483c18"},
-        {"id": "3eb70308-cabc-f1e5-7652-ba0be0483c18"},
-        {"id": "30f3cc36-1fcc-4230-8907-042cdc4d4f75"}
-        ]},
-        {"OS::Cinder::Volume": [
-        {"id": "25a145d1-a9bc-4e08-afe0-d9cd3a864a26"},
-        {"id": "ddac9f1b-0666-47d8-a49b-3be89fc14a24"}
-        ]}
-      ]
-      "links": [
-          {
-              "href": "http://localhost:9322/v1/audit_templates/27e3153e-d5bf-4b7e-b517-fb518e17f34c",
-              "rel": "self"
-          },
-          {
-              "href": "http://localhost:9322/audit_templates/27e3153e-d5bf-4b7e-b517-fb518e17f34c",
-              "rel": "bookmark"
-          }
-      ],
+      "scope": [{
+          "host_aggregates": [{
+              "id": "1"
+          }, {
+              "id": "2"
+          }, {
+              "id": "3"
+          }]
+      }, {
+          "availability_zones": [{
+              "name": "AZ1"
+          }, {
+              "name": "AZ2"
+          }]
+      }, {
+          "exclude": [{
+              "instances": [{
+                  "uuid": "9766dff1-3c81-4de2-92ae-19e0d9adcec6"
+              }, {
+                  "uuid": "777541bb-ce4f-4bf3-8320-d5792d5cdf6e"
+              }]
+          }, {
+              "compute_nodes": [{
+                  "name": "compute1"
+              }]
+          }]
+      }],
+      "links": [{
+          "href": "http://localhost:9322/v1/audit_templates/27e3153e-d5bf-4b7e-b517-fb518e17f34c",
+          "rel": "self"
+      }, {
+          "href": "http://localhost:9322/audit_templates/27e3153e-d5bf-4b7e-b517-fb518e17f34c",
+          "rel": "bookmark"
+      }],
       "name": "My Audit Template",
       "updated_at": "2016-01-07T13:23:52.761937",
       "uuid": "27e3153e-d5bf-4b7e-b517-fb518e17f34c"
@@ -200,13 +220,8 @@ None
 Notifications impact
 --------------------
 
-An alarm should be sent whenever an audit scope is no longer valid for one of
-the following reasons:
-
-* a resource type does not exist
-* a resource UUID does not exist
-* a resource type can not be handled by any optimization strategy associated
-  to the goal of the audit template
+Warning message should be sent when resources are not avaliable. The message
+should describes which resource is not available.
 
 Other end user impact
 ---------------------
@@ -241,7 +256,7 @@ Assignee(s)
 -----------
 
 Primary assignee:
-  None
+  alexchadin
 
 Other contributors:
   jed56
@@ -253,20 +268,15 @@ Work Items
 
 Here is the list of foreseen work items:
 
-* Create a new **watcher/objects/scope.py** class to handle the new data object
-  that contains the array of resource types and for each resource type an array
-  of UUIDs.
 * Add a **scope** field to the  **watcher/objects/audit_template.py** class
 * Update the **AuditTemplate** class in **watcher/db/sqlalchemy/models.py**
-* Add the **scope** object as an input parameter of **execute()** method of
-  the **BaseStrategy** class. Update the **execute_strategy()** method of
-  **watcher/decision_engine/strategy/context/default.py** consequently.
+* Create **watcher/decision_engine/scope** folder, where default handler and
+  base handler class will be placed.
+* To apply scope to the CDM we need to add instance of scope default handler
+  to the **watcher/decision_engine/strategy/strategies/base.py** before
+  strategy execution.
 * Update the **watcher/api/controllers/v1/audit_template.py** class to handle
   the new **scope** field and the verifications of resource types and UUIDs.
-* Add some verification code to make sure a resource type or resource UUID
-  added to an audit scope exists.
-* Implement the code of the periodic task which makes sure every audit scope
-  is still valid.
 * Update unit tests and integration tests (Tempest scenarios)
 * Provide the database migration script
 
@@ -278,7 +288,7 @@ This blueprint is related to the following blueprint:
 * Today, the `Audit Template`_ has to be populated by hand. In this blueprint:
   https://blueprints.launchpad.net/watcher/+spec/query-list-of-auditable-resource-types-for-a-goal
   we would like to add some helpers which enable the admin to get the list of
-  auditable ressources for a given goal, depending on which `Strategies`_ are
+  auditable resources for a given goal, depending on which `Strategies`_ are
   installed on the `Watcher Decision Engine`_.
 
   Each strategy will be able to return the list of auditable resource types
@@ -288,13 +298,6 @@ This blueprint is related to the following blueprint:
   The admin will just need to select the auditable ressources he/she wants to
   add to the Audit Template, just like a customer would add products in a
   basket.
-
-We should also submit a blueprint to the Heat project so that it would be
-possible to get the list of available resource types in the
-`OpenStack cluster`_ from the Heat API. This list would depend on what
-OpenStack services have been installed on the infrastructure (Nova, Neutron,
-Sahara,...). It would enable Watcher to check whether a resource type, that is
-used in the audit scope, exists or not.
 
 Testing
 =======
@@ -326,11 +329,10 @@ Documentation Impact
 References
 ==========
 
-* List of OpenStack resource types defined for the Heat orchestration service:
-  http://docs.openstack.org/developer/heat/template_guide/openstack.html
 * Links to IRC discussions:
 
   * http://eavesdrop.openstack.org/meetings/watcher/2016/watcher.2016-01-27-14.00.log.html
+  * http://eavesdrop.openstack.org/irclogs/%23openstack-watcher/%23openstack-watcher.2016-08-10.log.html
 
 History
 =======
@@ -340,7 +342,6 @@ None
 
 .. _Audit: https://factory.b-com.com/www/watcher/doc/watcher/glossary.html#audit
 .. _Audit Template: https://factory.b-com.com/www/watcher/doc/watcher/glossary.html#audit-template
-.. _managed resource: https://factory.b-com.com/www/watcher/doc/watcher/glossary.html#managed-resource
 .. _OpenStack cluster: https://factory.b-com.com/www/watcher/doc/watcher/glossary.html#cluster
 .. _Strategies: https://factory.b-com.com/www/watcher/doc/watcher/glossary.html#strategy
 .. _Watcher Decision Engine: https://factory.b-com.com/www/watcher/doc/watcher/architecture.html#watcher-decision-engine
