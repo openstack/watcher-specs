@@ -1,0 +1,11 @@
+approved/cluster-model-objects-wrapper.rst ../implemented/cluster-model-objects-wrapper.rst
+approved/configurable-weights-default-planner.rst ../implemented/configurable-weights-default-planner.rst
+approved/continuously-optimization.rst ../implemented/continuously-optimization.rst
+approved/efficacy-indicator.rst ../implemented/efficacy-indicator.rst
+approved/get-goal-from-strategy.rst ../implemented/get-goal-from-strategy.rst
+approved/optimization-threshold.rst ../implemented/optimization-threshold.rst
+approved/persistent-audit-parameters.rst ../implemented/persistent-audit-parameters.rst
+approved/plugins-parameters.rst ../implemented/plugins-parameters.rst
+approved/scoring-module.rst ../implemented/scoring-module.rst
+approved/sd-strategy.rst ../implemented/sd-strategy.rst
+approved/uniform-airflow-migration-strategy.rst ../implemented/uniform-airflow-migration-strategy.rst
