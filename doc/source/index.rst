@@ -25,6 +25,7 @@ Here you can find the specs, and spec template, for each release:
    :glob:
    :maxdepth: 1
 
+   specs/ocata/index
    specs/newton/index
    specs/mitaka/index
 
