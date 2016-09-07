@@ -70,9 +70,9 @@ an array of resource uuid(s):
 
   "scope": [
             {"host_aggregates": [
-                {"id": "1"},
-              {"id": "2"},
-              {"id": "3"}
+              {"id": 1},
+              {"id": 2},
+              {"id": 3}
             ]},
             {"availability_zones": [
               {"name": "AZ1"},
@@ -174,11 +174,11 @@ Zones and some objects to exclude:
       "goal": "MINIMIZE_ENERGY",
       "scope": [{
           "host_aggregates": [{
-              "id": "1"
+              "id": 1
           }, {
-              "id": "2"
+              "id": 2
           }, {
-              "id": "3"
+              "id": 3
           }]
       }, {
           "availability_zones": [{
@@ -243,6 +243,9 @@ Other deployer impact
 
 The operator may have to configure the frequency of the periodic task that
 regularly checks the validity of all the audit scopes.
+
+The operator may specify not only Host Aggregates IDs,
+but Host Aggregate names too (will be provided in future).
 
 Developer impact
 ----------------
