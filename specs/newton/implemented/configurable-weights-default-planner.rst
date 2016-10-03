@@ -132,7 +132,7 @@ Jinquan Ni <ni.jinquan@zte.com.cn>
 
 Work Items
 ----------
-* Replace the the storage of the weights in the default planner
+* Replace the storage of the weights in the default planner
 * Update the documentation
 * add unit tests
 
