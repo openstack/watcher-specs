@@ -20,7 +20,7 @@ respectively.
 Some notes about the watcher-spec and blueprint process:
 
 * Not all blueprints need a spec. For more information see
-  http://docs.openstack.org/developer/watcher/devref/mitaka.blueprints.html#when-is-a-blueprint-needed
+  http://docs.openstack.org/developer/nova/blueprints.html#specs
 
 * The aim of this document is first to define the problem we need to solve,
   and second agree the overall approach to solve that problem.
@@ -90,11 +90,6 @@ What use cases does this address? What impact on actors does this change have?
 Ensure you are clear about the actors in each use case: Developer, End User,
 Deployer etc.
 
-Project Priority
------------------
-
-Does this blueprint fit under one of the :ref:`mitaka-priorities`? If so which
-one and how?
 
 Proposed change
 ===============
