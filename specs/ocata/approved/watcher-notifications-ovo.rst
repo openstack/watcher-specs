@@ -74,9 +74,9 @@ used in Nova for the `versioned-notification-api blueprint`_, i.e.:
 
     {
         "priority": "INFO",
-        "event_type": "infra-optim.audit.update",
+        "event_type": "audit.update",
         "timestamp": "2016-10-07 09:31:10.895274",
-        "publisher_id": "watcher-api",
+        "publisher_id": "infra-optim:localhost",
         "message_id": "a13cb7a6-8fae-4e20-8fc8-1c4e851fa6f5",
         "payload": {
           // [...]
