@@ -112,7 +112,7 @@ Virtual Layer
 * Virtual Bay (used by Magnum)
 
 This is an indicative list of nodes that could populate the graph. The
-exast type of nodes that will be offered is depended from the platfrom
+exist type of nodes that will be offered is depended from the platfrom
 services (e.g. Nova, Neutron, ODL etc.) available in the testbed.
 Components in the landscape/topology will be represented as nodes and
 connections to other components will be represented as edges between these
