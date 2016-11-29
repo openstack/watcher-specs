@@ -28,7 +28,7 @@ Developers proposing a specification should propose a new file in the
 ``approved`` directory. watcher-specs-core will review the change in the usual
 manner for the OpenStack project and eventually it will get merged if a
 consensus is reached. At this time the Launchpad blueprint is also approved.
-The developer is then free to propose code reviews to implement their
+Developers are then free to propose code reviews to implement their
 specification. These reviews should be sure to reference the Launchpad
 blueprint in their commit message for tracking purposes.
 
