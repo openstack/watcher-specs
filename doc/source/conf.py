@@ -278,3 +278,4 @@ epub_copyright = u'2015, Watcher Team'
 
 # Allow duplicate toc entries.
 #epub_tocdup = True
+suppress_warnings = ['image.nonlocal_uri']
