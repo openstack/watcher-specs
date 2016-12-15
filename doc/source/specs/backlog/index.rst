@@ -13,7 +13,7 @@ A spec that exists here is something that either needs a driver or
 implementor, or something that can't be done currently. If you would
 like to implement one of these specifications, fill out the missing
 sections and follow the standard process of submitting it to a release
-(See :doc:`../../readme`).
+(See :doc:`../../index`).
 
 Template:
 
