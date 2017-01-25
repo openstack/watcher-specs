@@ -24,7 +24,7 @@ a lot of time to launch migration actions in sequence.
 Use Cases
 ----------
 
-As an administrator, I would like to be able to run Action plan that will
+As an administrator, I would like to be able to run an action plan that will
 launch actions for every node (compute, network, storage) in parallel.
 
 Proposed change
@@ -33,7 +33,7 @@ Proposed change
 We can launch several concurrent actions with the same action weight in
 parallel.
 
-This specification defines two different planner with the same input/output
+This specification defines two different planners with the same input/output
 dataflow: weight planner and workload stabilization planner. Each planner
 should use new ``parents`` attribute that will store list of actions the
 action is linked to, but there are different ways to fill up this attribute.
@@ -41,8 +41,11 @@ action is linked to, but there are different ways to fill up this attribute.
 Weight planner is designed to get unified way to parallelize execution
 of actions. It knows nothing about structure of specified actions and how they
 are related to each other. The main goal is to build sets of actions ordered by
-their weights. Administrator can specify each action type's weight and its
-parallelization ability.
+their weights. High weight actions will be planned before the low weight ones.
+Parallelization is the availability to execute several actions, with the same
+action type, in parallel. Parallelization factor is limited by another taskflow
+parameter named max_worker. Administrator can specify each action type's weight
+and its parallelization ability in the watcher configuration file.
 Let's show example of acyclic directed graph for this planner:
 
 ::
@@ -207,7 +210,21 @@ None
 
 Other end user impact
 ---------------------
-None
+New configuration parameters in watcher.conf:
+
+[watcher_planner]
+planner = weight
+#planner = workload_stabilization
+
+[watcher_planners.weight]
+#weights = turn_host_to_acpi_s3_state:10,resize:20,migrate:30,sleep:40,
+change_nova_service_state:50,nop:60
+#parallelization = turn_host_to_acpi_s3_state:2,resize:2,migrate:2,sleep:1,
+change_nova_service_state:1,nop:1
+
+[watcher_planners.workload_stabilization]
+#weights = turn_host_to_acpi_s3_state:10,resize:20,migrate:30,sleep:40,
+change_nova_service_state:50,nop:60
 
 Performance Impact
 ------------------
@@ -216,7 +233,8 @@ None
 
 Other deployer impact
 ---------------------
-None
+We will have 2 new planner extensions.
+We should reinstall properly watcher by running pip install [-e].
 
 
 Developer impact
