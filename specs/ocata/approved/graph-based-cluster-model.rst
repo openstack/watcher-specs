@@ -112,7 +112,7 @@ Virtual Layer
 * Virtual Bay (used by Magnum)
 
 This is an indicative list of nodes that could populate the graph. The
-exist type of nodes that will be offered is depended from the platfrom
+exact type of nodes that will be offered is depended from the platfrom
 services (e.g. Nova, Neutron, ODL etc.) available in the testbed.
 Components in the landscape/topology will be represented as nodes and
 connections to other components will be represented as edges between these
@@ -212,13 +212,15 @@ Work Items
 ----------
 
 Workplan:
+
 * Finalization of the conceptual methodology
 * Definition of information to be captured and service APIs.
 * Implementation of the graph model service:
-Implementation of the graph model server from building
-the NetworkX model.
-Implementation of the RESTful endpoints and APIs for
-graph extraction (json) and model acquisition.
+
+  * Implementation of the graph model server from building
+    the NetworkX model.
+  * Implementation of the RESTful endpoints and APIs for
+    graph extraction (json) and model acquisition.
 * Integration and testing.
 
 
