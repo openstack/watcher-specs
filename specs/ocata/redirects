@@ -1,0 +1,8 @@
+approved/define-the-audit-scope.rst ../implemented/define-the-audit-scope.rst
+approved/audit-versioned-notifications-api.rst ../implemented/audit-versioned-notifications-api.rst
+approved/automatic-triggering-audit.rst ../implemented/automatic-triggering-audit.rst
+approved/graph-based-cluster-model.rst ../implemented/graph-based-cluster-model.rst
+approved/parallel-applier.rst ../implemented/parallel-applier.rst
+approved/planner-storage-action-plan.rst ../implemented/planner-storage-action-plan.rst
+approved/watcher-notifications-ovo.rst ../implemented/watcher-notifications-ovo.rst
+approved/watcher-versioned-objects.rst ../implemented/watcher-versioned-objects.rst
