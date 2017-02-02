@@ -6,3 +6,4 @@ approved/parallel-applier.rst ../implemented/parallel-applier.rst
 approved/planner-storage-action-plan.rst ../implemented/planner-storage-action-plan.rst
 approved/watcher-notifications-ovo.rst ../implemented/watcher-notifications-ovo.rst
 approved/watcher-versioned-objects.rst ../implemented/watcher-versioned-objects.rst
+approved/action-plan-versioned-notifications-api.rst ../implemented/action-plan-versioned-notifications-api.rst
