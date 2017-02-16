@@ -9,3 +9,6 @@ build
 *.pyc
 .testrepository
 *.DS_Store
+#IntelliJ Idea
+.idea/
+
