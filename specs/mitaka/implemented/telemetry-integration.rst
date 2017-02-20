@@ -80,7 +80,7 @@ But there is an impact on how Watcher will request the metrics in the Decision
 Engine, especially regarding the measurements names because Watcher used to
 have its own measurements naming system.
 
-See `the full list of available measurements for Telemetry <http://docs.openstack.org/admin-guide-cloud/telemetry-measurements.html>`_
+See `the full list of available measurements for Telemetry <https://docs.openstack.org/admin-guide/telemetry-measurements.html>`_
 
 REST API impact
 ---------------
@@ -182,7 +182,7 @@ Dependencies
 
 * https://wiki.openstack.org/wiki/Gnocchi
 
-* http://docs.openstack.org/admin-guide-cloud/telemetry-measurements.html
+* https://docs.openstack.org/admin-guide/telemetry-measurements.html
 
 Testing
 =======
