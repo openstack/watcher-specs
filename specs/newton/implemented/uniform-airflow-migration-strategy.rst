@@ -161,9 +161,9 @@ Dependencies
 
 * https://blueprints.launchpad.net/watcher/+spec/optimization-threshold
 
-* http://docs.openstack.org/admin-guide-cloud/telemetry-measurements.html
+* https://docs.openstack.org/admin-guide/telemetry-measurements.html
 
-* http://docs.openstack.org/developer/python-novaclient/api.html
+* https://docs.openstack.org/developer/python-novaclient/api.html
 
 
 Testing

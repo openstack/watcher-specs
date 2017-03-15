@@ -148,9 +148,9 @@ Dependencies
 
 * https://blueprints.launchpad.net/ceilometer/+spec/api-v2-improvement
 
-* http://docs.openstack.org/admin-guide-cloud/telemetry-measurements.html
+* https://docs.openstack.org/admin-guide/telemetry-measurements.html
 
-* http://docs.openstack.org/developer/python-novaclient/api.html
+* https://docs.openstack.org/developer/python-novaclient/api.html
 
 
 Testing
