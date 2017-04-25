@@ -32,20 +32,110 @@ Proposed change
 Allow RESTful API(GET /v1/actions/(action_uuid)) to get description information
 of a specified action.
 
-Define different action-description templates for different action types.
 
-Localize action-description.
+- Define a mapping of action_type and description
 
+  + action_type: 'migrate'
+
+    description: 'Moving a VM instance from source_node to destination_node'
+
+  + action_type: 'change_nova_service_state'
+
+    description: 'Disables or enables the nova-compute service.
+                  A disabled nova-compute service can not be selected
+                  by the nova for future deployment of new server.'
+
+  + action_type: 'resize'
+
+    description: 'Resize a server with specified flavor.'
+
+  + action_type: 'sleep'
+
+    description: 'Wait for a given interval in seconds.'
+
+  + action_type: 'nop'
+
+    description: 'Logging a NOP message'
+
+
+- Add a new table to save the mapping
+
+  + This table includes action_type and action description.
+
+
+- Show description of a specified action
+
+  + Add the logic of computing action_description to "get_one" method in
+    watcher/api/controllers/v1/action.py
 
 Alternatives
 ------------
 
-None
+- Implement 2 notifications:
+
+  In order to share the description of all the action plugins installed
+  alongside the Applier so that we wouldn't need to also install these plugins
+  on the API side
+
+  + the 1st one the API side that requests the action descriptions and the 2nd
+    one on the Applier side that emits all the actions, including their
+    descriptions (both notifications will have to be versioned).
+
+  + The latter will also have to be emitted upon starting the Applier to notify
+    the API of any change of description.
+
+**action_info.request**
+
+.. code-block:: json
+
+    {
+      "priority": "INFO",
+      "payload": {
+        "watcher_object.namespace": "watcher",
+        "watcher_object.version": "1.0",
+        "watcher_object.name": "ActionInfoPayload",
+        "watcher_object.data": {
+          "description": "moving a VM instance",
+          "action_type": "migrate",
+        },
+      },
+      "publisher_id": "infra-optim:localhost",
+      "timestamp": "2017-01-04 16:31:36.264673",
+      "event_type": "action_info.request",
+      "message_id": "cbcf9f2c-7c53-4b4d-91ec-db49cca024b6"
+    }
+
+
+**action_info.emit**
+
+.. code-block:: json
+
+    {
+      "priority": "INFO",
+      "payload": {
+        "watcher_object.namespace": "watcher"
+        "watcher_object.version": "1.0",
+        "watcher_object.name": "ActionInfoPayload",
+        "watcher_object.data": {
+          "action_type": "migrate",
+          "description": "moving a VM instance",
+        },
+      },
+      "publisher_id": "infra-optim:localhost",
+      "timestamp": "2017-01-04 16:31:36.264673",
+      "event_type": "action_info.emit",
+      "message_id": "cbcf9f2c-7c53-4b4d-91ec-db49cca024b6"
+    }
+The implementation is as follows:
+https://review.openstack.org/#/c/454638/
+But in my test, The number of received notifications is often less than
+the number of notifications sent.
 
 Data model impact
 -----------------
 
-None
+Add a new table named 'action_descriptions'.
+This table includes action_type and action description.
 
 REST API impact
 ---------------
@@ -104,92 +194,22 @@ Assignee(s)
 -----------
 
 Primary assignee:
-  hanrong
+  licanwei, hanrong
 
 Work Items
 ----------
-
-A literal description is computed from action type and parameters of an action.
-
-- Implement 2 notifications:
-
-  In order to share the description of all the action plugins installed
-  alongside the Applier so that we wouldn't need to also install these plugins
-  on the API side
-
-  + the 1st one the API side that requests the action descriptions and the 2nd
-    one on the Applier side that emits all the actions, including their
-    descriptions (both notifications will have to be versioned).
-
-  + The latter will also have to be emitted upon starting the Applier to notify
-    the API of any change of description.
-
-**action_info.request**
-
-.. code-block:: json
-
-    {
-      "priority": "INFO",
-      "publisher_id": "infra-optim:localhost",
-      "timestamp": "2017-01-04 16:31:36.264673",
-      "event_type": "action_info.request",
-      "message_id": "cbcf9f2c-7c53-4b4d-91ec-db49cca024b6"
-    }
-
-
-**action_info.emit**
-
-.. code-block:: json
-
-    {
-      "priority": "INFO",
-      "payload": {
-        "watcher_object.data": {
-          "action_type": "migrate",
-          "description-template": "Migrates a server to a destination node"
-        },
-        "watcher_object.name": "ActionInfoPayload",
-        "watcher_object.version": "1.0",
-        "watcher_object.namespace": "watcher"
-      },
-      "publisher_id": "infra-optim:localhost",
-      "timestamp": "2017-01-04 16:31:36.264673",
-      "event_type": "action_info.emit",
-      "message_id": "cbcf9f2c-7c53-4b4d-91ec-db49cca024b6"
-    }
-
-- Define a mapping of action_type and description-template
-
-  + acton_type: 'migrate'
-
-    description_template: '%s migration of the instance %s from %s to %s' % (
-                           migration_type, resource_id, source_node,
-                           destination_node)
-
-  + action_type: 'change_nova_service_state'
-
-    description_template: 'Change the state of Nova service state to %s for %s'
-                          % (state, resource_id)
-
-
-- Show description of a specified action by computing from action_type and
-  action_description_template dynamically.
-
-  + Add the logic of computing action_description to "get_one" method in
-    watcher/api/controllers/v1/action.py
-
+Add a new table to save the mapping
+Add logic to update the table when action loading
+Add logic to show the action description
 
 Dependencies
 ============
-
-https://blueprints.launchpad.net/watcher/+spec/
-action-versioned-notifications-api
-
+None
 
 Testing
 =======
 
-None
+Unit tests should be updated.
 
 
 Documentation Impact
@@ -202,8 +222,8 @@ explain the new concepts regarding "action" definition.
 References
 ==========
 
-None
-
+https://docs.openstack.org/watcher/latest/#action
+https://docs.openstack.org/watcher/latest/#action-plan
 
 History
 =======
