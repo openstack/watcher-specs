@@ -1,0 +1,16 @@
+approved/action-versioned-notifications-api.rst ../implemented/action-versioned-notifications-api.rst
+approved/add-power-on-and-off-in-watcher.rst ../implemented/add-power-on-and-off-in-watcher.rst
+approved/audit-tag-vm-metadata.rst ../implemented/audit-tag-vm-metadata.rst
+approved/background-jobs-ha.rst ../implemented/background-jobs-ha.rst
+approved/cancel-action-plan.rst ../implemented/cancel-action-plan.rst
+approved/cinder-model-integration.rst ../implemented/cinder-model-integration.rst
+approved/cron-based-continuous-audits.rst ../implemented/cron-based-continuous-audits.rst
+approved/dynamic-action-description.rst ../implemented/dynamic-action-description.rst
+approved/energy-saving-strategy.rst ../implemented/energy-saving-strategy.rst
+approved/gnocchi-watcher-support.rst ../implemented/gnocchi-watcher-support.rst
+approved/jsonschema-validation.rst ../implemented/jsonschema-validation.rst
+approved/noisy_neighbor_strategy.rst ../implemented/noisy_neighbor_strategy.rst
+approved/services-versioned-notifications-api.rst ../implemented/services-versioned-notifications-api.rst
+approved/stale-action-plan.rst ../implemented/stale-action-plan.rst
+approved/suspended-audit-state.rst ../implemented/suspended-audit-state.rst
+approved/volume-migrate-action.rst ../implemented/volume-migrate-action.rst
