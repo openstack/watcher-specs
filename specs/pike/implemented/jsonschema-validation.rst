@@ -104,6 +104,7 @@ Work Items
 ----------
 
 * Remove voluptuous schemas
+
 As of now, voluptuous is used to:
 - validate the input parameters of a Watcher action when it gets to the
 Applier.

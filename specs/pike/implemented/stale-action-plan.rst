@@ -264,7 +264,7 @@ Work Items
 Here is the list of foreseen work items:
 
 * Add config parameter **action_plan_expiry** and
-  **check_periodic_interval**(SCENARIO_1).
+  **check_periodic_interval** (SCENARIO_1).
 * Modify the **DefaultActionPlanHandler** class, trigger to check the state
   of action plan(SCENARIO_2).
 * Currently, when receives the specific event (such as nova notification

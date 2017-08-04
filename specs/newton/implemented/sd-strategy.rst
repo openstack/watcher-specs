@@ -89,13 +89,13 @@ probable difference in the number of node vcpus. Therefore we transform
 VM CPU utilization to overall host CPU utilization. The following pseudocode
 shows the right way of transforming:
 
-:math:`cpu_impact = cpu_util * vm_vcpus/host_vcpus`
+:math:`cpu_{impact} = cpu_{util} * {vm_vcpus}/{host_vcpus}`
 
 After that the load values of nodes are normalised and the new
 standard deviation is calculated with them.
 The total standard deviation is calculated as weighted arithmetic mean:
 
-:math:`\sum weight_metric*sd_metric`, where:
+:math:`\sum weight_{metric}*sd_{metric}`, where:
 
 * weight_metric is the weight of metric. The value of weight is to be in
   range(0, 1). Each weight of metric is set by `watcher input parameters`_.

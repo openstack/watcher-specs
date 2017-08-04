@@ -129,7 +129,7 @@ Example :
 **Parse and validate workload grammar**
 
 
-Use `TOSCA-Parser_  module to parse a TOSCA serialized workload
+Use `TOSCA-Parser`_  module to parse a TOSCA serialized workload
 grammar and validate it by applying values from telemetry
 or other metrics.
 

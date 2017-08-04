@@ -126,6 +126,7 @@ Alternatives
       "event_type": "action_info.emit",
       "message_id": "cbcf9f2c-7c53-4b4d-91ec-db49cca024b6"
     }
+
 The implementation is as follows:
 https://review.openstack.org/#/c/454638/
 But in my test, The number of received notifications is often less than

@@ -70,7 +70,7 @@ number that will facilitate retro-compatibility whenever adding new fields.
 The basic structure for all notifications will be the same as the one that is
 used in Nova for the `versioned-notification-api blueprint`_, i.e.:
 
-.. code-block:: json
+.. code-block:: none
 
     {
         "priority": "INFO",
