@@ -43,7 +43,7 @@ the Audit Scope to exclude VMs by metadata.
 
 Example -
 
-.. code-block:: json
+.. code-block:: none
 
      "scope": [
           {"host_aggregates": [
@@ -135,19 +135,19 @@ Work Items
 ----------
 * Platform owners or automations external to watcher will set the VM Metadata
 
-.. code-block:: json
+.. code-block:: none
 
     # nova meta vm_name set optimize=True
 
 * Enhance the current compute cluster data model to now include the VM
-metadata in its representation.
+  metadata in its representation.
 
 * Capability in ``Audit Scope`` to exclude by instance_metadata
-(https://github.com/openstack/watcher/blob/54f0758fc3ac47edb4bc3f6eb5e56bf53d4e02f8/watcher/decision_engine/scope/default.py).
+  (https://github.com/openstack/watcher/blob/54f0758fc3ac47edb4bc3f6eb5e56bf53d4e02f8/watcher/decision_engine/scope/default.py).
 
 
 * Modify base strategy to filter VMs by metadata based on configuration
-option
+  option
 
 .. code-block:: python
 
@@ -178,7 +178,7 @@ Testing
 
 * Unit tests on watcher `Audit`_ and `Strategy`_
 * Unit tests for audit scope. Also tempest scenarios to create an Audit
-Template and define an Audit scope with "instance_metadata"
+  Template and define an Audit scope with "instance_metadata"
 
 Documentation Impact
 ====================
@@ -196,6 +196,5 @@ History
 N/A
 
 .. _Audit: http://docs.openstack.org/developer/watcher/glossary.html#audit
-.. _Strategy:
-http://docs.openstack.org/developer/watcher/glossary.html#strategies
+.. _Strategy: http://docs.openstack.org/developer/watcher/glossary.html#strategies
 .. _Audit Scope: https://specs.openstack.org/openstack/watcher-specs/specs/newton/approved/define-the-audit-scope.html

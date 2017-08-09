@@ -17,6 +17,7 @@ without VMs. And when the workload increases watcher will trigger a "power on"
 request to fullfill the service requirements.
 
 This feature includes four sub-features:
+
 * Build a new baremetal data model in Watcher.
 * Add new actions "power on" and "power off" in Watcher.
 * Implement a new strategy based on 'baremetal' and 'compute' data models,

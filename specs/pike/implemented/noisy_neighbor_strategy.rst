@@ -52,7 +52,7 @@ Proposed change
   solution"
 
 * Use Ceilometer client to get following metrics for detecting LLC noisy
-neighbor:
+  neighbor:
 
   * cpu_l3_cache -- LLC occupancy of a VM
 
@@ -61,7 +61,7 @@ neighbor:
   * Monitor L3 cache of all VMs in order of their "watcher-priority", that is
     set in VM metadata.
     Example: L3 cache of VM with watcher-priority as "1" will be monitored
-             before VM with watcher-priority as "8".
+    before VM with watcher-priority as "8".
 
   * If L3 cache of a VM goes down by more than the threshold, mark it as
     high priority. Then start monitoring L3 cache of VMs in reverse order of

@@ -127,12 +127,15 @@ Work Items
   method for all the tasks(actions) added in the flow. In the revert method of
   action, current action state is checked and based on the action state
   (PENDING, ONGOING, SUCCEEDED) revert method will execute defined steps.
-  e.g. if action_state is PENDING:
-        # update action_state to CANCELLED
-       if action_state is ONGOING:
-        # call abort_action
-       if action state is SUCCEEDED:
-        # do nothing
+
+  .. code-block:: python
+
+      e.g. if action_state is PENDING:
+            # update action_state to CANCELLED
+           if action_state is ONGOING:
+            # call abort_action
+           if action state is SUCCEEDED:
+            # do nothing
 
 * Before starting any new action watcher-applier will check for the state of
   action plan, if its state is updated to CANCELLING it will trigger an

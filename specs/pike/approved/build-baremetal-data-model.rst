@@ -99,7 +99,7 @@ Proposed change
   2) ironic node-create
 
 ironic node-create [-c <chassis>]
-                    -d <driver>
+                   -d <driver>
                    [-i <key=value>]
                    [-p <key=value>]
                    [-e <key=value>]
@@ -113,6 +113,7 @@ ironic node-create -d your_driver agent_ipmitool \
                    -i ipmi_password=<ipmi_password> \
                    -e compute_node=compute.node.id \
                    -u ironic_node_uuid
+
 compute.node.id is the compute node ID saved in CCDM
 (Compute Cluster Data Model)
 
@@ -120,6 +121,7 @@ compute.node.id is the compute node ID saved in CCDM
 2) On watcher, build the Baremetal Cluster Data Model (BCDM) by
 periodically requesting Ironic service.
 The Baremetal Cluster Data Model structure is shown as followings
+
 {
   "uuid": "4f37180e-c310-4327-a286-d5ab9ffc6497",
   "power_state": "power on",
