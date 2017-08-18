@@ -8,7 +8,7 @@
 Add new actions "power on" and "power off" in Watcher
 =====================================================
 
-https://blueprints.launchpad.net/watcher/+spec/reduce-power-consumption
+https://blueprints.launchpad.net/watcher/+spec/add-power-on-off
 
 For a data center with large amount of VMs and physical hosts,the total power
 consumption is tremendous. When workload is not heavy, Watcher can be used to
