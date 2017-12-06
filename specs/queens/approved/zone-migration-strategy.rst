@@ -39,7 +39,7 @@ Add eight `Efficacy Indicator`_.
 
 * LiveInstanceMigrateCount
 
-  The number of instances actually live migrated
+  The number of instances should be live migrated
 
 * PlannedLiveInstanceMigrateCount
 
@@ -47,7 +47,7 @@ Add eight `Efficacy Indicator`_.
 
 * ColdInstanceMigrateCount
 
-  The number of instances actually cold migrated
+  The number of instances should be cold migrated
 
 * PlannedColdInstanceMigrateCount
 
@@ -55,7 +55,7 @@ Add eight `Efficacy Indicator`_.
 
 * VolumeMigrateCount
 
-  The number of detached volumes actually migrated
+  The number of detached volumes should be migrated
 
 * PlannedVolumeMigrateCount
 
@@ -63,36 +63,37 @@ Add eight `Efficacy Indicator`_.
 
 * VolumeUpdateCount
 
-  The number of attached volumes actually migrated
+  The number of attached volumes should be updated
 
 * PlannedVolumeUpdateCount
 
-  The number of attached volumes planned to migrate
+  The number of attached volumes planned to update
 
 Add `Efficacy Specification`_ associated with the goal.
 The efficacy specification has four global efficacy indicators.
 
 * live_instance_migrate_ratio
 
-  Ratio of actual live migrated instances to planned live migrate instances.
-  The result of LiveInstanceMigrateCount / PlannedLiveInstanceMigrateCount
+  Ratio of planned live migrate instances to instances should be live
+  migrated.
+  The result of PlannedLiveInstanceMigrateCount / LiveInstanceMigrateCount
 
 * cold_instance_migrate_ratio
 
-  Ratio of actual cold migrated instances to planned cold migrate instances.
-  The result of ColdInstanceMigrateCount / PlannedColdInstanceMigrateCount
+  Ratio of planned cold migrate instances to instances should be cold
+  migrated.
+  The result of PlannedColdInstanceMigrateCount / ColdInstanceMigrateCount
 
 * volume_migrate_ratio
 
-  Ratio of actual detached volumes migrated to planned detached volumes
+  Ratio of planned detached volumes to volumes should be migrated.
   migrate.
-  The result of VolumeMigrateCount / PlannedVolumeMigrateCount
+  The result of PlannedVolumeMigrateCount / VolumeMigrateCount
 
 * volume_update_ratio
 
-  Ratio of actual attached volumes migrated to planned attached volumes
-  migrate.
-  The result of VolumeUpdateCount / PlannedVolumeUpdateCount
+  Ratio of planned attached volumes to volumes should be updated.
+  The result of PlannedVolumeUpdateCount / PlannedVolumeUpdateCount
 
 Add `Strategy`_ "Zone migration".
 The strategy gets compute node and storage pool names given by input
@@ -108,7 +109,7 @@ by the following list given by input parameter.
 
 * compute
 
-  The strategy chooses instances in descending order of the ordered list:
+  The strategy chooses instances in descending order of one of the following:
 
   * vcpu_num
 
@@ -120,7 +121,7 @@ by the following list given by input parameter.
 
 * storage
 
-  The strategy chooses volumes in descending order of the ordered list:
+  The strategy chooses volumes in descending order of one of the following:
 
   * size
 
@@ -133,7 +134,7 @@ For example, If the following input parameters is given::
         "compute_node": ["compute1", "compute2"],
         "compute": ["cpu_num"],
         "storage_pool": ["pool1", "pool2"],
-        "storage": ["size", "created_at"]
+        "storage": ["size"]
     }
 
 And we have list of instances and volumes as the followings.
@@ -177,13 +178,7 @@ for performance reason. This behavior is configurable.
 The strategy uses weights planner that is the planner by default which has
 the number of actions to be run in parallel on a per action type basis.
 In addition to that, the strategy has the number of actions to be run in
-parallel per node or pool. The number is first given by the input parameter
-and vary with network workload.
-The strategy gets hardware.network.incoming.bytes and
-hardware.network.outgoing.bytes from ceilometer for each node.
-If those are under threshold given by input parameter, the number is
-increased. If those are over threshold, the number becomes zero
-(zero means single action).
+parallel per node or pool. The number is given by the input parameter.
 
 The strategy gets volumes and instances from prioritized ones and migrates
 them which are limited to the number of volumes and instances to
@@ -192,14 +187,14 @@ per action in weight planner.
 
 The input parameters are the followings::
 
-    compute_node": [
+    compute_nodes": [
         {
             "src_node": "cen-cmp02",
             "dst_node": "cen-cmp01"
         },
         ......
     ],
-    "storage_pool": [
+    "storage_pools": [
         {
             "src_pool": "cen-cmp02@lvm#afa",
             "dst_pool": "cen-cmp01@lvm#afa",
@@ -210,10 +205,6 @@ The input parameters are the followings::
     ],
     "parallel_per_node": 2,
     "parallel_per_pool": 2,
-    "threshold": {
-        "compute_node": [100, 100],
-        "storage_pool": [500, 500]
-    },
     "priority": {
         "project": ["pj1", "pj2"],
         "compute_node": ["compute1", "compute2"],
