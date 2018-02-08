@@ -141,7 +141,7 @@ as well as their respective payload structures.
 Cancel Action Plan
 ------------------
 
-As of now Adminstrator can update the action plan state to **CANCELLED** but
+As of now Administrator can update the action plan state to **CANCELLED** but
 there is no action taken by Watcher to cancel the action plan. It only updates
 the action plan state to **CANCELLED**.
 
