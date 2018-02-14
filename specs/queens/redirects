@@ -1,0 +1,12 @@
+approved/add-name-for-audit.rst ../implemented/add-name-for-audit.rst
+approved/audit-scoper-for-storage-data-model.rst ../implemented/audit-scoper-for-storage-data-model.rst
+approved/build-baremetal-data-model.rst ../implemented/build-baremetal-data-model.rst
+approved/cdm-scoping.rst ../implemented/cdm-scoping.rst
+approved/check-strategy-requirements.rst ../implemented/check-strategy-requirements.rst
+approved/extend-node-status.rst ../implemented/extend-node-status.rst
+approved/listen-all-necessary-notifications.rst ../implemented/listen-all-necessary-notifications.rst
+approved/multiple-global-efficacy.rst ../implemented/multiple-global-efficacy.rst
+approved/notifications-actionplan-cancel.rst ../implemented/notifications-actionplan-cancel.rst
+approved/storage-capacity-balance.rst ../implemented/storage-capacity-balance.rst
+approved/watcher-multi-datasource.rst ../implemented/watcher-multi-datasource.rst
+approved/zone-migration-strategy.rst ../implemented/zone-migration-strategy.rst
