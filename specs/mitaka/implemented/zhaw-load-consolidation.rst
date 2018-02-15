@@ -35,8 +35,8 @@ Use Cases
 The use case is one in which the `Administrator`_ wants to perform a load
 consolidation on the `resources`_ to reduce the amount of underutilized
 servers. The Administrator invokes Watcher with the `Goal`_ of
-“VM_WORKLOAD_CONSOLIDATION”. Watcher then executes the `Strategy`_
-“VM_WORKLOAD_CONSOLIDATION_STRATEGY”. It then presents a set of `Actions`_
+"VM_WORKLOAD_CONSOLIDATION". Watcher then executes the `Strategy`_
+"VM_WORKLOAD_CONSOLIDATION_STRATEGY". It then presents a set of `Actions`_
 to the  Administrator. The Administrator then approves the recommended
 `action plan`_ - typically VM live-migration actions - and instructs Watcher
 to perform the actions.
@@ -50,8 +50,8 @@ Proposed change
 ===============
 
 The proposed change is to add a new Goal and a new Strategy to Watcher.
-The new Goal is “VM_WORKLOAD_CONSOLIDATION” and the new Strategy is
-“VM_WORKLOAD_CONSOLIDATION_STRATEGY”. The new Strategy is designed to be a
+The new Goal is "VM_WORKLOAD_CONSOLIDATION" and the new Strategy is
+"VM_WORKLOAD_CONSOLIDATION_STRATEGY". The new Strategy is designed to be a
 lightweight consolidation mechanism which can be tuned based on experience; it
 also operates quickly. The purpose of the strategy is to move the aggregate
 operating point of the `Cluster`_ to increase the number of servers with
