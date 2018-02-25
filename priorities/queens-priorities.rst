@@ -68,7 +68,7 @@ For a data center with large amount of VMs and physical hosts,the total power
 consumption is tremendous. When workload is not heavy, Watcher can be used to
 reduce power consumption by triggering a request to power off some idle hosts
 without VMs. And when the workload increases Watcher will trigger a "power on"
-request to fullfill the service requirements.
+request to fulfill the service requirements.
 
 Check the strategy requirements
 -------------------------------
