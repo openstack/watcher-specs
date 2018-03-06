@@ -106,7 +106,7 @@ the standard deviation in a cluster best. That option is added
 to the map of migration options, that afterwards gets sorted
 by standard deviation in ascending order. From the resulting list
 we iteratively take a host/vm pair and place it into solution with
-action “MIGRATION”. We compare the resulting deviations of CPU and RAM
+action "MIGRATION". We compare the resulting deviations of CPU and RAM
 to the threshold values. If the resulting deviations are less than
 the threshold values, the cycle stops and the resulting action plan
 is sent to Watcher Applier.
