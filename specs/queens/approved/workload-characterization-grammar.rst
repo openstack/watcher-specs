@@ -186,7 +186,7 @@ Output -
 
 
 Here is more examples and documentation -
-https://pypi.python.org/pypi/tosca-parser/0.7.0
+https://pypi.org/project/tosca-parser/0.7.0
 
 
 **Store Grammar in VM Metadata**

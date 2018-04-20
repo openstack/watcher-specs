@@ -145,7 +145,7 @@ Work Items
 Dependencies
 ============
 
-* https://pypi.python.org/pypi/libvirt-python
+* https://pypi.org/project/libvirt-python
 
 Testing
 =======

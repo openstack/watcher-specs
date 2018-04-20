@@ -145,4 +145,4 @@ History
 
 None
 
-.. _croniter: https://pypi.python.org/pypi/croniter
+.. _croniter: https://pypi.org/project/croniter

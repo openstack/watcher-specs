@@ -494,12 +494,12 @@ None
 
 .. _Actions handling in Watcher API: https://factory.b-com.com/www/watcher/doc/watcher/webapi/v1.html#actions
 .. _SemVer: http://semver.org/
-.. _stevedore: https://pypi.python.org/pypi/stevedore
+.. _stevedore: https://pypi.org/project/stevedore
 .. _TaskFlow: https://wiki.openstack.org/wiki/TaskFlow
 .. _Mistral: https://wiki.openstack.org/wiki/Mistral
 .. _PyUtilib: https://software.sandia.gov/trac/pyutilib
 .. _Spiff Workflow: https://github.com/knipknap/SpiffWorkflow/wiki
-.. _hurry.workflow: https://pypi.python.org/pypi/hurry.workflow
+.. _hurry.workflow: https://pypi.org/project/hurry.workflow
 .. _potential Action states: https://factory.b-com.com/www/watcher/doc/watcher/glossary.html#action
 .. _Action: https://factory.b-com.com/www/watcher/doc/watcher/glossary.html#action
 .. _Actions: https://factory.b-com.com/www/watcher/doc/watcher/glossary.html#action
