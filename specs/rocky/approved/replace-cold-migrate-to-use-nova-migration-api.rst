@@ -17,7 +17,7 @@ Problem description
 Currently watcher implements instance cold migration by it's own for
 specifying destination node.
 The implementation includes instance creation. Since administrator runs
-watcher API, instance migrates to admin project.
+watcher API, instance migrates to service project.
 
 Use Cases
 ----------
