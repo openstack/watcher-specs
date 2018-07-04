@@ -10,7 +10,8 @@ Add the start and end time for CONTINUOUS audit
 
 https://blueprints.launchpad.net/watcher/+spec/add-start-end-time-for-continuous-audit
 
-Currently we can only set audit execution interval, but we can not set audit start and end time.
+Currently we can only set audit execution interval, but we can not set audit
+start and end time.
 We need to add the audit start and end time for CONTINUOUS audit.
 
 
@@ -33,11 +34,11 @@ Proposed change
 * For CONTINUOUS audit, if its state is PENDING or ONGOING, launch the audit
   only if the current time is between start_time and end_time
 
-The user can specify the start and end time or any one, If user doesn't specify start and end time,
-the audit's behavior is the same as before. If no start time, audit starts after creating.
-If no end time, audit runs until its state is SUSPENDED or CANCELLED.
-If end time is provided, the audit will be set from ONGOING to SUCCEEDED
-after end time and not running again.
+The user can specify the start and end time or any one, If user doesn't specify
+start and end time, the audit's behavior is the same as before. If no start
+time, audit starts after creating. If no end time, audit runs until its state
+is SUSPENDED or CANCELLED. If end time is provided, the audit will be set from
+ONGOING to SUCCEEDED after end time and not running again.
 The datetime format is ISO 8601, such as: YYYY-MM-DD hh:mm:ss
 
 Here are some CLI examples:

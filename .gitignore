@@ -7,7 +7,7 @@ build
 *.swp
 *.swo
 *.pyc
-.testrepository
+.stestr/
 *.DS_Store
 #IntelliJ Idea
 .idea/
