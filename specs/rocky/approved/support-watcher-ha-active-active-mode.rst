@@ -10,7 +10,8 @@ Support Watcher HA active-active Mode
 
 https://blueprints.launchpad.net/watcher/+spec/support-watcher-ha-active-active-mode
 
-Watcher Decision Engine and Applier currently don't support HA active-active mode.
+Watcher Decision Engine and Applier currently don't support
+HA active-active mode.
 
 
 Problem description
