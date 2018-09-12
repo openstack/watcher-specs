@@ -11,4 +11,5 @@ build
 *.DS_Store
 #IntelliJ Idea
 .idea/
+.testrepository/
 
