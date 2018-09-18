@@ -1,0 +1,3 @@
+approved/exclude-project-by-audit-scope.rst ../implemented/exclude-project-by-audit-scope.rst
+approved/replace-cold-migrate-to-use-nova-migration-api.rst ../implemented/replace-cold-migrate-to-use-nova-migration-api.rst
+approved/support-watcher-ha-active-active-mode.rst ../implemented/support-watcher-ha-active-active-mode.rst

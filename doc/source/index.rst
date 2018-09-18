@@ -25,6 +25,7 @@ Here you can find the specs, and spec template, for each release:
    :glob:
    :maxdepth: 1
 
+   specs/stein/index
    specs/rocky/index
    specs/queens/index
    specs/pike/index
