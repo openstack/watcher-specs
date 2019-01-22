@@ -220,7 +220,7 @@ None
 Notifications impact
 --------------------
 
-Warning message should be sent when resources are not avaliable. The message
+Warning message should be sent when resources are not available. The message
 should describes which resource is not available.
 
 Other end user impact
