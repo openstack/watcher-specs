@@ -483,7 +483,7 @@ IRC discussions:
 
 * Action point related to `TaskFlow`_: http://eavesdrop.openstack.org/meetings/watcher/2015/watcher.2015-12-09-13.59.html
 * A lot of exchanges regarding Actions and Workflow management in the Git
-  reviews related to the Watcher glossary: https://review.openstack.org/#/c/246370/
+  reviews related to the Watcher glossary: https://review.opendev.org/#/c/246370/
 
 
 History

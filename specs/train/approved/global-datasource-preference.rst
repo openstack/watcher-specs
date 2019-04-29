@@ -22,11 +22,11 @@ Problem description
 ===================
 
 The datasources available to Watcher differs per OpenStack deployment so there
-can not be a standard preference that will work for all deployments. Configuring
-which datasources are preferred is essential to correctly deploying Watcher,
-however, the datasource preference needs to be defined per strategy. As a result
-the datasource preference will have to be configured many times which can lead
-to errors and costs more time.
+can not be a standard preference that will work for all deployments.
+Configuring which datasources are preferred is essential to correctly deploying
+Watcher, however, the datasource preference needs to be defined per strategy.
+As a result the datasource preference will have to be configured many times
+which can lead to errors and costs more time.
 
 Use Cases
 ----------
@@ -41,9 +41,9 @@ Proposed change
 ===============
 
 Allow specifying of global datasource order by exposing new configuration
-parameter. This parameter will be part of a new group labeled watcher_datasource
-. The datasource parameter for strategies remains available and overrides
-the globally configured datasources.
+parameter. This parameter will be part of a new group labeled
+watcher_datasource. The datasource parameter for strategies remains available
+and overrides the globally configured datasources.
 
 ::
 
@@ -53,9 +53,9 @@ the globally configured datasources.
 Alternatives
 ------------
 
-Try datasources but ensure that if they are not properly configured an error is
-raised and an alternative datasource is tried. Major downside of this approach
-is that it will create a lot of errors in some scenarios.
+Try datasources but ensure that if they are not properly configured an error
+is raised and an alternative datasource is tried. Major downside of this
+approach is that it will create a lot of errors in some scenarios.
 
 Data model impact
 -----------------
