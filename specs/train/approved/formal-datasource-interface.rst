@@ -110,13 +110,14 @@ to retrieve metrics from their databases. The parameter ``aggregation`` is
 renamed to ``aggregate`` to match the names used by other methods. The
 parameters ``group_by`` and ``dimensions`` are removed.
 
-The definitions off most methods in ``DataSourceBase`` will now look as detailed
-below.
+The definitions off most methods in ``DataSourceBase`` will now look as
+detailed below.
 
 .. code-block:: python
 
-  def statistic_aggregation(self, resource=None, resource_type, meter_name=None,
-                            period=300, granularity=300, aggregate='mean')
+  def statistic_aggregation(self, resource=None, resource_type,
+                            meter_name=None, period=300,
+                            granularity=300, aggregate='mean')
 
   def get_host_cpu_usage(self, resource, resource_type, period, aggregate,
                          granularity=None)
