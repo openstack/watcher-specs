@@ -53,9 +53,9 @@ and overrides the globally configured datasources.
 Alternatives
 ------------
 
-Try datasources but ensure that if they are not properly configured an error is
-raised and an alternative datasource is tried. Major downside of this approach
-is that it will create a lot of errors in some scenarios.
+Try datasources but ensure that if they are not properly configured an error
+is raised and an alternative datasource is tried. Major downside of this
+approach is that it will create a lot of errors in some scenarios.
 
 Data model impact
 -----------------
