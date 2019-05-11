@@ -169,9 +169,9 @@ Dependencies
 A lot of OpenStack projects already propose purge mechanism. It would be
 pertinent to have a look on their mechanism implementation, if needed.
 
-* glance : https://review.openstack.org/#/c/216782/
-* cinder : https://review.openstack.org/#/c/146766/
-* nova : https://review.openstack.org/#/c/203751/
+* glance : https://review.opendev.org/#/c/216782/
+* cinder : https://review.opendev.org/#/c/146766/
+* nova : https://review.opendev.org/#/c/203751/
 * ospurge : https://github.com/openstack/ospurge
 
 Testing

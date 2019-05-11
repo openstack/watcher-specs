@@ -175,5 +175,5 @@ History
 
 None
 
-.. _commit: https://review.openstack.org/#/c/551963
+.. _commit: https://review.opendev.org/#/c/551963
 .. _solution: https://blueprints.launchpad.net/watcher/+spec/sync-datamodel-before-audit-execution

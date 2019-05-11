@@ -114,7 +114,7 @@ Developer impact
 Test this new action using unit test. Or as an alternative, developer
 can use an actuator strategy to allow excplicit action execution.
 This actuator strategy is described in the following patchset:
-https://review.openstack.org/#/c/425110/.
+https://review.opendev.org/#/c/425110/.
 
 Implementation
 ==============

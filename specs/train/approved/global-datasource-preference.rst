@@ -141,7 +141,7 @@ the new parameter.
 References
 ==========
 
-https://review.openstack.org/#/c/645294/
+https://review.opendev.org/#/c/645294/
 
 
 History

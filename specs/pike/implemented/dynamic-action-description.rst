@@ -128,7 +128,7 @@ Alternatives
     }
 
 The implementation is as follows:
-https://review.openstack.org/#/c/454638/
+https://review.opendev.org/#/c/454638/
 But in my test, The number of received notifications is often less than
 the number of notifications sent.
 

@@ -184,6 +184,6 @@ None
 .. _aggregates: https://github.com/openstack/nova/blob/stable/queens/nova/scheduler/filters/aggregate_instance_extra_specs.py#L30
 .. _core-compatible: https://github.com/openstack/nova/blob/stable/queens/nova/scheduler/filters/core_filter.py#L79
 .. _different: https://github.com/openstack/nova/blob/stable/queens/nova/scheduler/filters/affinity_filter.py#L27
-.. _nova-policies: https://review.openstack.org/#/c/329873/
+.. _nova-policies: https://review.opendev.org/#/c/329873/
 .. _select_destinations: https://github.com/openstack/nova/blob/stable/queens/nova/scheduler/manager.py
 .. _enhance-watcher-applier-engine: https://blueprints.launchpad.net/watcher/+spec/enhance-watcher-applier-engine
