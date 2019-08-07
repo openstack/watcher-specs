@@ -34,45 +34,48 @@ Proposed change
 
 Now Watcher had added `Placement helper`_. Watcher can get resource
 information such as total, allocation ratio and reserved information
-from API `list resource provider inventories`_,
-and resource usage from API `list resource provider usages`_.
+from API `list resource provider inventories`_.
 
 Watcher ComputeNode
 -------------------
 
 We need to add some fields to the Watcher ComputeNode:
 
-* vcpus_used: the number of vcpu used in this node.
-* cpu_reserved: The amount of cpu a node has reserved for its own use.
-* cpu_ratio: CPU allocation ratio.
-* memory_mb_used: The memory used in this node(in MiB).
+* vcpu_reserved: The amount of cpu a node has reserved for its own use.
+* vcpu_ratio: CPU allocation ratio.
 * memory_mb_reserved: The amount of memory a node has reserved for
   its own use.
-* ram_ratio: Memory allocation ratio.
-* disk_gb_used: The disk used in this node(in GiB).
+* memory_ratio: Memory allocation ratio.
 * disk_gb_reserved: The amount of disk a node has reserved for its own use.
 * disk_ratio: Disk allocation ratio.
 
-We can calculate the free resource through the total, reserved, used and
+We can calculate the total resource capacity through the total, reserved and
 allocation ratio.
 
 The formula:
-free = (vcpus-cpu_reserved)*cpu_ratio-vcpus_used
+vcpu capacity = (vcpus-vcpu_reserved)*vcpu_ratio
 
 For example, for vcpu resource with:
 
 ::
 
   vcpus = 8
-  vcpus_used = 16
-  cpu_reserved = 2
-  cpu_ratio = 5.0
+  vcpu_reserved = 2
+  vcpu_ratio = 5.0
 
-The free vcpus is (8 - 2) * 5 - 16 = 14.
+The vcpu capacity is (8 - 2) * 5.0 = 30.
+
+We also add some new propeties to the Watcher ComputeNode:
+
+* vcpu_capacity: The amount of vcpu, take allocation ratio into account,
+  but do not include reserved.
+* memory_mb_capacity: The amount of memory, take allocation ratio into
+  account, but do not include reserved.
+* disk_gb_capacity: The amount of disk, take allocation ratio into
+  account, but do not include reserved.
 
 .. _Placement helper: http://specs.openstack.org/openstack/watcher-specs/specs/train/approved/support-placement-api.html
 .. _list resource provider inventories: https://developer.openstack.org/api-ref/placement/?expanded=list-resource-provider-inventories-detail#list-resource-provider-inventories
-.. _list resource provider usages: https://developer.openstack.org/api-ref/placement/?expanded=list-resource-provider-usages-detail
 
 Compute Data Model
 ------------------
