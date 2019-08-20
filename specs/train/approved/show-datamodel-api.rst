@@ -14,10 +14,11 @@ https://blueprints.launchpad.net/watcher/+spec/show-datamodel-api
 Problem description
 ===================
 
-The datamodel is very important for Watcher to generate resource
+The data model is very important for Watcher to generate resource
 optimization solutions. Currently, it can only be found by looking at
 the log file, which is very inconvenient. Therefore, it is necessary
-to add an api to facilitate the user to quickly view the datamodel.
+to add an api to facilitate the user to quickly view the current datamodel
+in memory.
 
 Use Cases
 ----------
@@ -36,16 +37,18 @@ about the datamodel, then parses and returns.
 
 The command line interface used in watcherclient could be like this:
 
-* watcher datamodel list [--audit <audit_id>]
+* openstack optimize datamodel list [--audit <audit_uuid>]
+* [--type <type>] [--detail]
 
-In watcherclient, we can add **"datamodel.py,datamodel_shell.py"** to send
+In watcherclient, we can add **"data_model.py,data_model_shell.py"** to send
 datamodel list request and receive the result.
 
-In watcher-api, we can add **"datamodel.py"** to recieve the
+In watcher-api, we can add **"data_model.py"** to recieve the
 python-watcherclient's request and call watcher-decision-engine module.
 
 In watcher-decision-engine, we can get datamodel data according to the
-specified scope, then parses the datamodel and return to watcher-api.
+specified scope and the type, then parses the datamodel and return to
+watcher-api.
 
 Alternatives
 ------------
@@ -60,25 +63,9 @@ None
 REST API impact
 ---------------
 
-Add following **datamodel** REST:
+Add following **data model** REST:
 
-* GET /v1/datamodels
-
-  * Normal http response code(200)
-  * Expected error http response code(400,401)
-
-* Request
-
-  * **audit_uuid (Optional)**: UUID of an audit
-
-* Response
-
-  * **instance_uuid**: UUID of an instance
-  * **node_uuid**: UUID of an compute node
-  * **instance_state**: state of instance
-  * **node_state**: state of compute node
-
-* GET /v1/datamodels/detail
+* GET /v1/data_model
 
   * Normal http response code(200)
   * Expected error http response code(400,401)
@@ -86,89 +73,70 @@ Add following **datamodel** REST:
 * Request
 
   * **audit_uuid (Optional)**: UUID of an audit
+  * **type (Optional)**: Type of data model user want to list
 
 * Response
 
-  * **instance_uuid**: UUID of an instance
-  * **instance_state**: state of instance
-  * **instance_name**: name of instance
-  * **instance_vcpus**: number of instance vcpus
-  * **instance_memory**: memory of instance
-  * **instance_disk**: disk of instance
-  * **instance_disk_capacity**: disk capacity of instance
-  * **node_uuid**: UUID of an compute node
-  * **node_state**: state of compute node
-  * **node_name**: name of node
-  * **node_vcpus**: number of compute node vcpus
+  * **server_uuid**: UUID of server
+  * **server_name**: name of server
+  * **server_vcpus**: number of server vcpus
+  * **server_memory**: memory of server
+  * **server_disk**: disk of server
+  * **server_state**: state of server
+  * **node_uuid**: UUID of node
+  * **node_hostname**: name of node
+  * **node_vcpus**: number of node vcpus
+  * **node_vcpu_ratio**: vcpu ratio of node
   * **node_memory**: memory of node
+  * **node_memory_ratio**: memory ratio of node
   * **node_disk**: disk of node
-  * **node_disk_capacity**: disk capacity of node
+  * **node_disk_ratio**: disk ratio of node
+  * **node_state**: state of node
 
 
-* Example JSON representation of Datamodel
+* Example JSON representation of compute data model
 
 ::
 
   {
-    "compute": [
-      {
-        "node_uuid": "90d7da5c-d432-4eba-89b4-743c9f1e6cfa",
-        "node_name": "node_1",
-        "node_vcpus": 48,
-        "node_memory": "4096",
-        "node_disk": "40",
-        "node_disk_capacity": "60"
-        "servers": [
+      "context": [
           {
-            "instance_uuid": "9e7cbe91-b391-4394-a42c-68996a4fd555",
-            "instance_state": "active",
-            "instance_name": "vm_4",
-            "instance_vcpus": 16,
-            "instance_memory": "2048",
-            "instance_disk": "10",
-            "instance_disk_capacity": "35",
+              "server_uuid": "1bf91464-9b41-428d-a11e-af691e5563bb",
+              "server_name": "chenke-test1",
+              "server_vcpus": "1",
+              "server_memory": "512",
+              "server_disk": "1",
+              "server_state": "active",
+              "node_uuid": "253e5dd0-9384-41ab-af13-4f2c2ce26112",
+              "node_hostname": "localhost.localdomain",
+              "node_vcpus": "4",
+              "node_vcpu_ratio": "16.0",
+              "node_memory": "16383",
+              "node_memory_ratio": "1.5",
+              "node_disk": "37"
+              "node_disk_ratio": "1.0",
+              "node_state": "up",
           },
           {
-            "instance_uuid": "8e7cbe91-b391-4394-a42c-68996a4fd555",
-            "instance_state": "active",
-            "instance_name": "vm_5",
-            "instance_vcpus": 16,
-            "instance_memory": "2048",
-            "instance_disk": "10",
-            "instance_disk_capacity": "35",
+              "server_uuid": "e2cb5f6f-fa1d-4ba2-be1e-0bf02fa86ba4",
+              "server_name": "chenke-test2",
+              "server_vcpus": "1",
+              "server_memory": "512",
+              "server_disk": "1",
+              "server_state": "active",
+              "node_uuid": "253e5dd0-9384-41ab-af13-4f2c2ce26112",
+              "node_hostname": "localhost.localdomain",
+              "node_vcpus": "4",
+              "node_vcpu_ratio": "16.0",
+              "node_memory": "16383",
+              "node_memory_ratio": "1.5",
+              "node_disk": "37"
+              "node_disk_ratio": "1.0",
+              "node_state": "up",
           }
-        ]
-      },
-      {
-        "node_uuid": "78d7da5c-d432-4eba-89b4-743c9f1e6cfa",
-        "node_name": "node_2",
-        "node_vcpus": 96,
-        "node_memory": "4096",
-        "node_disk": "60",
-        "node_disk_capacity": "60"
-        "servers": [
-          {
-            "instance_uuid": "6b7cbe91-b391-4394-a42c-68996a4fd55b",
-            "instance_state": "active",
-            "instance_name": "vm_1",
-            "instance_vcpus": 32,
-            "instance_memory": "2048",
-            "instance_disk": "10",
-            "instance_disk_capacity": "35",
-          },
-          {
-            "instance_uuid": "527cbe91-b391-4394-a42c-68996a4fd5e7",
-            "instance_state": "active",
-            "instance_name": "vm_2",
-            "instance_vcpus": 16,
-            "instance_memory": "2048",
-            "instance_disk": "10",
-            "instance_disk_capacity": "35",
-          }
-        ]
-      }
-    ]
+      ]
   }
+
 
 Security impact
 ---------------
@@ -191,7 +159,7 @@ in python-watcherclient:
 and add the **audit** parameter to filter the datamodel in the
 specified scope:
 
-* watcher datamodel list [--audit <audit_id>]
+* watcher datamodel list [--audit <audit_uuid>]
 
 Performance Impact
 ------------------
@@ -250,7 +218,7 @@ Documentation Impact
 ====================
 
 * A documentation explaining how to use
-  **watcher datamodel list [--audit <audit_id>]**
+  **watcher datamodel list [--audit <audit_uuid>] [--type <type>] [--detail]**
 
 * Update API Reference
 
@@ -266,4 +234,14 @@ None
 History
 =======
 
-None
+
+.. list-table:: Revisions
+   :header-rows: 1
+
+   * - Release Name
+     - Description
+   * - Stein
+     - Introduced
+   * - Train
+     - Updated
+
