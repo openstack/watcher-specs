@@ -124,63 +124,63 @@ That said, the following changes are going to be implemented:
 
 * In the watcher/common package:
 
-  * ScoringEngine class defining an abstract base class for all Scoring
-    Engine implementations. The abstract class will include the following
-    abstract methods:
+  ScoringEngine class defining an abstract base class for all Scoring
+  Engine implementations. The abstract class will include the following
+  abstract methods:
 
-    :get_engine_id:
-      Method will return a unique string identifier of the Scoring Engine.
-      This ID will be used by factory classes and `Strategies`_ wanting to
-      use a specific Scoring Engine
+  :get_engine_id:
+    Method will return a unique string identifier of the Scoring Engine.
+    This ID will be used by factory classes and `Strategies`_ wanting to
+    use a specific Scoring Engine
 
-      :Input:
-        none
+    :Input:
+      none
 
-      :Result:
-        unique string ID (must be unique across all Scoring Engines)
+    :Result:
+      unique string ID (must be unique across all Scoring Engines)
 
-    :get_model_metadata:
-      Method will return a map with metadata information about the data
-      model. This might include informations about used algorithm, labels
-      for data returned by the score method (useful for interpreting the
-      results)
+  :get_model_metadata:
+    Method will return a map with metadata information about the data
+    model. This might include informations about used algorithm, labels
+    for data returned by the score method (useful for interpreting the
+    results)
 
-      :Input:
-        none
+    :Input:
+      none
 
-      :Result:
-        dictionary with metadata, both keys and values as strings
+    :Result:
+      dictionary with metadata, both keys and values as strings
 
-        For example, the metadata can contain the following information (real
-        world example):
+      For example, the metadata can contain the following information (real
+      world example):
 
-        * scoring engine is a classifier, which is based on the learning data
-          with these column labels (last column is the result used for
-          learning): [MEM_USAGE, PROC_USAGE, PCI_USAGE, POWER_CONSUMPTION,
-          CLASSIFICATION_ID]
-        * during the learning process, the machine learning decides that it
-          actually only needs these columns to calculate the expected
-          CLASSIFICATION_ID: [MEM_USAGE, PROC_USAGE]
-        * because the scoring result is a list of doubles, we need to know
-          what it means, e.g. 0.0 == CLASSIFICATION_ID_2, 1.0 ==
-          CLASSIFICATION_ID_1, etc.
-        * there is no guarantee of the order of the columns or even the
-          existence of them in input/output list
-        * this information must be passed as metadata, so the user of the
-          scoring engine is able to "understand" the results
-        * in addition, the metadata might provide some insights like what was
-          the algorithm used for learning or how many training records were
-          used
+      * scoring engine is a classifier, which is based on the learning data
+        with these column labels (last column is the result used for
+        learning): [MEM_USAGE, PROC_USAGE, PCI_USAGE, POWER_CONSUMPTION,
+        CLASSIFICATION_ID]
+      * during the learning process, the machine learning decides that it
+        actually only needs these columns to calculate the expected
+        CLASSIFICATION_ID: [MEM_USAGE, PROC_USAGE]
+      * because the scoring result is a list of doubles, we need to know
+        what it means, e.g. 0.0 == CLASSIFICATION_ID_2, 1.0 ==
+        CLASSIFICATION_ID_1, etc.
+      * there is no guarantee of the order of the columns or even the
+        existence of them in input/output list
+      * this information must be passed as metadata, so the user of the
+        scoring engine is able to "understand" the results
+      * in addition, the metadata might provide some insights like what was
+        the algorithm used for learning or how many training records were
+        used
 
-    :calculate_score:
-      Method responsible for performing the actual scoring, such as
-      classifying or predicting data
+  :calculate_score:
+    Method responsible for performing the actual scoring, such as
+    classifying or predicting data
 
-      :Input:
-        list of float numbers (e.g. feature values)
+    :Input:
+      list of float numbers (e.g. feature values)
 
-      :Result:
-        list of float numbers (e.g. classified values, predicted results)
+    :Result:
+      list of float numbers (e.g. classified values, predicted results)
 
 * In the `Watcher Decision Engine`_:
 
