@@ -1,0 +1,11 @@
+approved/add-force-field-to-audit.rst ../implemented/add-force-field-to-audit.rst
+approved/global-datasource-preference.rst ../implemented/global-datasource-preference.rst
+approved/node-resource-consolidation.rst ../implemented/node-resource-consolidation.rst
+approved/support-placement-api.rst ../implemented/support-placement-api.rst
+approved/file-based-metricmap.rst ../implemented/file-based-metricmap.rst
+approved/grafana-proxy-datasource.rst ../implemented/grafana-proxy-datasource.rst
+approved/show-datamodel-api.rst ../implemented/show-datamodel-api.rst
+approved/formal-datasource-interface.rst ../implemented/formal-datasource-interface.rst
+approved/improve-compute-data-model.rst ../implemented/improve-compute-data-model.rst
+approved/support-keystoneclient-option.rst ../implemented/support-keystoneclient-option.rst
+approved/watcher-planner-selector.rst ../implemented/watcher-planner-selector.rst
