@@ -227,6 +227,17 @@ texinfo_documents = [
    'Miscellaneous'),
 ]
 
+# Disable usage of xindy https://bugzilla.redhat.com/show_bug.cgi?id=1643664
+latex_use_xindy = False
+
+latex_domain_indices = False
+
+latex_elements = {
+    'makeindex': '',
+    'printindex': '',
+    'preamble': r'\setcounter{tocdepth}{3}',
+}
+
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
 
