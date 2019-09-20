@@ -25,6 +25,7 @@ request to fulfill the service requirements.
 
 This "energy saving" goal can be fulfilled by adding the following subfeatures
 in Watcher:
+
 #. Add new actions "power on" and "power off" in Watcher.
 #. Implement a new strategy to generate 'power on' and 'power off' actions.
 
