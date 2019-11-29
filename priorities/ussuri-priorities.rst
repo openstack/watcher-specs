@@ -61,6 +61,7 @@ Event-driven optimization based
 -------------------------------
 We propose an event-driven optimization-based audit control.
 We wants to select among a list of events which may trigger the audit :
+
 - React to a predicted situation.
 - React to a critical situations and changes in system (e.g: threshold)
 - A new compute node has been added to the cluster
