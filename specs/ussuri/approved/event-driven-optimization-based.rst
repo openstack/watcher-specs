@@ -31,6 +31,10 @@ Proposed change
 
 Many monitor system, such as `aodh`_, can set `webhook`_ as alarm action,
 a POST request will be sent if the alarm is trigered.
+About the authentication of the POST request, Aodh's `alarm action`_
+can set prefix ``trust`` to add a ``X-Auth-Token`` header to the request url.
+Watcher add a new config option ``enable_webhooks_auth`` to decide whether
+to enable webhook authentication, the default is True.
 Watcher add the mechanism for receiving and handling alarm events.
 
 Here is the summary processing:
@@ -42,6 +46,7 @@ Watcher executes the audit and creates actionplan.
 
 .. _aodh: https://docs.openstack.org/aodh/latest/admin/telemetry-alarms.html#event-based-alarm
 .. _webhook: https://en.wikipedia.org/wiki/Webhook
+.. _alarm action: https://docs.openstack.org/aodh/latest/admin/telemetry-alarms.html
 
 Alternatives
 ------------
