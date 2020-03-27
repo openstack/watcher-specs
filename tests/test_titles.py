@@ -84,7 +84,7 @@ class TestTitles(testtools.TestCase):
             if line.startswith("..") and "image::" in line:
                 continue
             # Allow lines which do not contain any whitespace
-            if re.match("\s*[^\s]+$", line):
+            if re.match(r"\s*[^\s]+$", line):
                 continue
             self.assertTrue(
                 len(line) < 80,
