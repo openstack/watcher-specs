@@ -12,7 +12,6 @@
 # serve to show the default.
 
 import datetime
-import subprocess
 import sys
 import os
 
@@ -38,7 +37,7 @@ extensions = ['redirect',
              ]
 
 # Feed configuration for yasfb
-feed_base_url = 'http://specs.openstack.org/openstack/watcher-specs'
+feed_base_url = 'https://specs.openstack.org/openstack/watcher-specs'
 feed_author = 'Watcher Team'
 
 todo_include_todos = True
@@ -91,10 +90,17 @@ add_module_names = False
 show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'native'
 
 # A list of ignored prefixes for module index sorting.
 modindex_common_prefix = ['watcher-specs.']
+
+#openstackdocstheme options
+openstackdocs_repo_name = 'openstack/watcher-specs'
+openstackdocs_pdf_link = True
+openstackdocs_auto_name = False
+openstackdocs_bug_project = 'watcher'
+openstackdocs_bug_tag = ''
 
 # -- Options for man page output ----------------------------------------------
 man_pages = []
@@ -128,12 +134,6 @@ html_theme = 'openstackdocs'
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
 #html_favicon = None
-
-# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
-# using the given strftime format.
-git_cmd = ["git", "log", "--pretty=format:'%ad, commit %h'", "--date=local",
-           "-n1"]
-html_last_updated_fmt = subprocess.check_output(git_cmd).decode('utf-8')
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
