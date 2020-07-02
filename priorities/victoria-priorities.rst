@@ -13,6 +13,8 @@ List of priorities the Watcher drivers team is prioritizing in Victoria.
 +------------------------------------------------+------------------------+
 | `Kubernetes helm charts and docker images`_    | `Corne Lukken`_        |
 +------------------------------------------------+------------------------+
+| `time series framework`_                       | `Corne Lukken`_        |
++------------------------------------------------+------------------------+
 | `the community-wide goals`_                    |  `Li Canwei`_          |
 +------------------------------------------------+------------------------+
 
@@ -35,6 +37,16 @@ Kubernetes helm charts and docker images
 Blueprint to track all activities related to being able to deploy Watcher
 on K8s using helm charts. Also requires that the appropriate docker images
 are created and uploaded to a registry.
+
+time series framework
+---------------------
+Strategies are currently limited to obtain information about metrics in
+an aggregated form for the most recent measurements. This limits what
+strategies can achieve as they are unable to retrieve information about past
+occurrences or information about periodic patterns. A time series framework
+will allow datasources to provide metrics over specific periods without
+aggregation, allowing strategies to detect periodic patterns such as a weekly
+contention and resolve these accordingly.
 
 the community-wide goals
 ------------------------
