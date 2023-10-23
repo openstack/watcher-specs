@@ -89,7 +89,7 @@ Usage scenarios
 
 The most basic scenario is presented on the following diagram:
 
-.. image:: ../../../doc/source/images/scoring-engine-inside-decision-engine.png
+.. image:: /images/scoring-engine-inside-decision-engine.png
 
 It's important to notice that Scoring Engines might have different
 requirements and the implementations might vary. Some of them might be
@@ -98,7 +98,7 @@ In these cases it makes a sense to delegate the execution to Watcher Scoring
 module, which will be a new Watcher service, similar to `Watcher Decision
 Engine`_ or `Watcher Applier`_:
 
-.. image:: ../../../doc/source/images/scoring-engine-inside-scoring-module.png
+.. image:: /images/scoring-engine-inside-scoring-module.png
 
 Some other Scoring Engines might be implemented using external frameworks or
 even live entirely in the cloud, exposing only some API to work with them.
@@ -106,7 +106,7 @@ In this scenario, the abstraction layer will simply delegate work to these
 external systems (e.g. using some HTTP client libraries), as illustrated on
 the diagram below:
 
-.. image:: ../../../doc/source/images/scoring-engine-in-the-cloud.png
+.. image:: /images/scoring-engine-in-the-cloud.png
 
 Implementation details
 ----------------------
@@ -228,7 +228,7 @@ will be required to implement, whether the Watcher Scoring module part will be
 optional (it's not needed for example when using external analytics platforms
 running in the cloud).
 
-.. image:: ../../../doc/source/images/scoring-module-deployment.png
+.. image:: /images/scoring-module-deployment.png
 
 In addition, it will be possible to register multiple Scoring Engines from a
 single plug-in. The Scoring Engine list will also be dynamic, meaning that it

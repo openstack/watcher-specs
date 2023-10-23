@@ -92,7 +92,7 @@ from its internal cache.
 Here below is a sequence diagram depicting the workflow to be used in order to
 retrieve all the cluster data model:
 
-.. image:: ../../../doc/source/images/sequence_diagram_cluster_objects_wrapper_get_latest_model.png
+.. image:: /images/sequence_diagram_cluster_objects_wrapper_get_latest_model.png
    :width: 140%
 
 Each implementation of the ``BaseClusterModelCollector`` should begin
@@ -109,7 +109,7 @@ sensible default is likely in the every 60 minute range.
 Here below is a sequence diagram depicting the workflow to periodically
 synchronize all the cluster data models:
 
-.. image:: ../../../doc/source/images/sequence_diagram_cluster_objects_wrapper_sync.png
+.. image:: /images/sequence_diagram_cluster_objects_wrapper_sync.png
    :width: 140%
 
 If the periodic sync up tasks are the only method of updating the cache,
@@ -136,7 +136,7 @@ handler would be able to receive notifications such as:
 Here below is a sequence diagram depicting the workflow to update cluster data
 models after receiving a notification:
 
-.. image:: ../../../doc/source/images/sequence_diagram_cluster_objects_wrapper_notification.png
+.. image:: /images/sequence_diagram_cluster_objects_wrapper_notification.png
    :width: 140%
 
 Note that a single notification will not prompt the entire cluster model to be

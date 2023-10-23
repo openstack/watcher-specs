@@ -68,7 +68,7 @@ class and return the same `Goal`_ properties.
 Below you will find a class diagram showing a hierarchy of Strategies for
 several goals:
 
-.. image:: ../../../doc/source/images/class_diagram_goal_from_strategy.png
+.. image:: /images/class_diagram_goal_from_strategy.png
    :width: 140%
 
 In the future, it will also enable Watcher strategies to provide other common
@@ -101,7 +101,7 @@ The second one is performance and HA.
 
 Below the strategy class and sequence diagram for syncing the goals.
 
-.. image:: ../../../doc/source/images/get_goal_from_strategy_class_diagram.png
+.. image:: /images/get_goal_from_strategy_class_diagram.png
    :width: 140%
 
 
@@ -121,7 +121,7 @@ Therefore a new table should be created in the database for this.
 The proposed modification in the `Watcher database`_.
 is illustrated on the diagram below:
 
-.. image:: ../../../doc/source/images/get_goal_from_strategy_class_diagram.png
+.. image:: /images/get_goal_from_strategy_class_diagram.png
    :width: 140%
 
 In the audit_template object, the 'strategy' attribute is optional.

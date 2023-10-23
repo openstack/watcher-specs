@@ -87,7 +87,7 @@ Proposed change
 Here below is the class diagram outlining the changes that will have to be made
 in order to support the addition of configuration options:
 
-.. image:: ../../../doc/source/images/class_diagram_plugin_parameters.png
+.. image:: /images/class_diagram_plugin_parameters.png
    :width: 100%
 
 Moreover, all plugins are currently instantiated by the ``DefaultLoader`` when
@@ -97,7 +97,7 @@ abstract class method that every plugin class should implement. The latter
 method needs to be an class method so that when Watcher will collect the
 configuration of each plugin, there will be no need to instantiate them.
 
-.. image:: ../../../doc/source/images/sequence_diagram_plugin_parameters_load_plugin_parameters.png
+.. image:: /images/sequence_diagram_plugin_parameters_load_plugin_parameters.png
    :width: 100%
 
 In order to expose these plugin parameters to the administrator, we also have
@@ -105,7 +105,7 @@ to auto-discover them when we use the configuration file generator which is
 triggered either during the generation of the Watcher documentation or manually
 with the ``tox -e config`` command:
 
-.. image:: ../../../doc/source/images/sequence_diagram_plugin_parameters_generate_config.png
+.. image:: /images/sequence_diagram_plugin_parameters_generate_config.png
    :width: 100%
 
 In order to be able to achieve the process described in the above sequence

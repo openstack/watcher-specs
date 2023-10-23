@@ -155,7 +155,7 @@ stored metrics, ...).
 Below you will find a class diagram showing the hierarchy of `Strategies`_ for
 several goals and how they are related to efficacy specification classes:
 
-.. image:: ../../../doc/source/images/class_diagram_efficacy_indicator.png
+.. image:: /images/class_diagram_efficacy_indicator.png
    :width: 140%
 
 In the future, the `DDD Specification Pattern`_ will enable Watcher to compose

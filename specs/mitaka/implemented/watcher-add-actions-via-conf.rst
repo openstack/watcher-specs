@@ -53,7 +53,7 @@ architecture).
 Below you will find a diagram, showing the functional need regarding Actions
 management in Watcher:
 
-.. image:: ../../../doc/source/images/Watcher_Actions_Management_Functional_Need.png
+.. image:: /images/Watcher_Actions_Management_Functional_Need.png
    :width: 140%
 
 You can see that there is a need in Watcher for three main phases:
