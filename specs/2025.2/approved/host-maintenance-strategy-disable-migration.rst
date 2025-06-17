@@ -10,7 +10,7 @@ Host maintenance strategy disable migration
 
 Include the URL of your launchpad blueprint:
 
-https://blueprints.launchpad.net/watcher/+spec/example
+https://blueprints.launchpad.net/watcher/+spec/host-maintenance-strategy-disable-migration
 
 Problem description
 ===================
