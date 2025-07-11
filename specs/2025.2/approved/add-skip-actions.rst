@@ -54,7 +54,9 @@ Use Cases
 
 In both cases, a `status_message` may be provided and stored in the database.
 Similarly a `status_message` field will be added to the ActionPlan object that
-will be used to provide information about skipped actions.
+will be used to provide information about skipped actions. For consistency the
+`status_message` will be also added to the Audit object which will be used in
+future to store information related to status changes.
 
 Proposed change
 ===============
@@ -117,7 +119,7 @@ Microversion of the Watcher API will be increased for this change as follows:
   means that the value of the action state will be identical, independently
   of the Watcher API microversion used.
 * The new field `status_message` will be included in the new microversion
-  both in the Action and in the ActionPlan objects, so it will only be
+  both in the Action, ActionPlan and Audit objects, so it will only be
   included in the corresponding API calls when using the new microversion
   or higher. When using previous ones, the new field will not be included
   in API responses.
@@ -172,11 +174,19 @@ as specifically decided by the user or automatically by watcher detecting
 a condition which has been predefined to lead the action to `SKIPPED` instead
 of `FAILED` state.
 
+**Adding status_message to Audits**
+
+Although the audits state is not directly affected by the proposed use cases,
+it has been determined that the `status_message` field can be useful for the
+Audits too. It has been decided to include this field in the same API
+microversion for consistency among the API objects and clients.
+
 Data model impact
 -----------------
 
 * Add a new column `status_message` of type `String(255)` in Actions table.
 * Add a new column `status_message` of type `String(255)` in ActionPlans table.
+* Add a new column `status_message` of type `String(255)` in Audits table.
 
 REST API impact
 ---------------
@@ -221,6 +231,24 @@ In a new microversion the following API responses are extended:
           ....
       }
 
+* New field `status_message` will be included in audits:
+
+  * ``GET /v1/audits/detail``
+  * ``GET /v1/audits/``{audit_id}``
+
+  No changes in Return code(s).
+
+  Example of json addition in ``GET /v1/audits/``{audit_id}``
+  response:
+
+  .. code-block::
+
+
+      {
+          "state": "CANCELED",
+          "status_message": "Audit was canceled by user",
+          ....
+      }
 
 * A new Patch method on ``/v1/actions/``{action_id}`` will be added to skip
   an Action in PENDING state.
@@ -263,8 +291,8 @@ No security impact.
 Notifications impact
 --------------------
 
-The action and actionplan notifications will be extended to contain the newly
-added field.
+The action, actionplan and audit notifications will be extended to contain the
+newly added field.
 
 Other end user impact
 ---------------------
