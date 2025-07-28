@@ -48,8 +48,8 @@ a admin or service role. If this happens correctly, then each request is
 forwarded unchanged to Prometheus and Prometheus's response is forwarded
 without changes back to Watcher. The complete PromQL language is supported
 and all APIs required by Watcher are supported as well. It's expected for Aetos
-to always have an endpoint registered in keystone with service name 'aetos'
-and service type 'prometheus'.
+to always have an endpoint registered in keystone with service type
+'metric-storage'.
 
 The needed changes to add the support are these:
 
