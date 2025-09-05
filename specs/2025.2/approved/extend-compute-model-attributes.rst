@@ -28,8 +28,8 @@ Use Cases
 
 As an OpenStack Admin I would like to optimize my deployment, balancing the
 workload across compute nodes, without breaking any placement constraints
-associated with its instances like: server groups, affinity and anti-affinity
-policies, pinned availability zones, etc.
+associated with its instances like: flavor extra specs, affinity and
+anti-affinity policies, pinned availability zones, etc.
 
 Proposed change
 ===============
@@ -38,35 +38,27 @@ This blueprint proposes to extend the current compute model to include
 additional instance's attributes, available in the new API versions of
 ``GET /servers/detail`` API:
 
-* Scheduler Hints: provided by the user at server creation time, it defines
-  specific constraints that impact where the server is going to be placed.
-  E.g: server affinity or anti-affinity with another server or list of
-  servers, server groups, etc.
 * Pinned Availability Zone: defines that an instance should be pinned to an
   availability zone and this parameter should also be considered when
   migrating it.
-* Server Groups: a list of identifier of server groups to which the server
-  belongs. Each server group has its own policies and rules.
+* Flavor Extra Specs: specs that can include hardware requirements, resource
+  allocation policies, and custom placement rules that influence how servers
+  are scheduled across the infrastructure.
 
 .. note::
    If the configured compute API microversion is lower than the required
    ones, these new attributes will be left as empty, and strategies will
    not take the advantage of this proposed extension.
 
-The Server Group model object currently doesn't exist in the Nova Cluster
-Data Model and is not part of this implementation to add it. Server Group's
-policies and rules doesn't change after its creation, only the list of
-members gets updated together with server create and delete operations.
-The Nova collector doesn't need to keep polling for changes of this resource
-since Servers already provide this information in `server_groups` and in
-`scheduler_hints` details.
-
 .. note::
-   When consuming new attributes from the compute model, Strategies will need
-   to retrieve details about Server Group's policies and rules when
-   calculating server migrations. This will only be possible by adding a new
-   Nova API request, ``GET /os-server-groups``, but it is not in the scope of
-   this specification to implement it.
+   The amount of new attributes is limited by Wacther's maximum supported
+   compute API microversion. Since Watcher's Nova Collector implementation
+   is based on the usage of the ``python-novaclient``
+   library, the maximum supported compute API microversion is limited to
+   the same as the one supported by the library (which is the 2.96 for
+   now). This limitation can be overcome by changing the implementation
+   to use the ``openstacksdk`` library instead, but this is not in the scope
+   of this specification.
 
 A new configuration option will be added to the collector, to allow Admin to
 enable or disable the collection of these additional attributes. It will be
@@ -95,8 +87,7 @@ element of the Nova Cluster Data Model. The new fields are the
 following::
 
   "server_pinned_az": wfields.StringField(),
-  "server_hints": wfields.JsonField(),
-  "server_groups": wfields.ListOfStringsField(),
+  "flavor_extra_specs": wfields.JsonField(),
 
 REST API impact
 ---------------
@@ -110,14 +101,9 @@ Example of the new attributes in the response json:
 
       {
           "server_pinned_az": "us-west",
-          "server_hints": {
-            "same_host": [
-                "48c0e433-3d90-4056-a865-c8f555320aef",
-            ]
+          "server_flavor_extra_specs": {
+            "hw:watchdog_action": "reset",
           },
-          "server_groups": [
-            "d4e75852-8358-44c6-b20e-da3cc4853b19",
-          ],
           ....
 
 Security impact
@@ -173,12 +159,13 @@ Work Items
 Dependencies
 ============
 
-* Some attributes are only available in newer versions of Nova's API:
-  * Server Groups: microversion 2.71
+Some attributes are only available in newer versions of Nova's API:
+
+  * Flavor Extra Specs: microversion 2.47 (already supported)
   * Pinned Availability Zone: microversion 2.96
-  * Scheduler Hints: microversion 2.100
-  To achieve better results, it is expected that deployed Nova supports
-  most of the above microversions.
+
+To achieve better results, it is expected that deployed Nova supports
+most of the above microversions.
 
 Testing
 =======
