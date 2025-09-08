@@ -9,15 +9,6 @@ Template:
 
    Specification Template (2025.2 release) <template>
 
-2025.2 approved specs:
-
-.. toctree::
-   :glob:
-   :maxdepth: 1
-
-   approved/*
-
-
 2025.2 implemented specs:
 
 .. toctree::

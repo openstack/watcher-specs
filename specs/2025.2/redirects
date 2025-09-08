@@ -1,0 +1,4 @@
+approved/add-skip-actions.rst ../implemented/add-skip-actions.rst
+approved/extend-compute-model-attributes.rst ../implemented/extend-compute-model-attributes.rst
+approved/host-maintenance-strategy-disable-migration.rst ../implemented/host-maintenance-strategy-disable-migration.rst
+approved/prometheus-multitenancy-support.rst ../implemented/prometheus-multitenancy-support.rst
