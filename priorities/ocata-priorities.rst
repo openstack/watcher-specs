@@ -1,8 +1,8 @@
 .. _ocata-priorities:
 
-=========================
+========================
 Ocata Project Priorities
-=========================
+========================
 
 List of priorities the Watcher drivers team is prioritizing in Ocata.
 
@@ -69,7 +69,7 @@ Make all Watcher objects support `oslo.versionnedobjects`_.
 Automatic triggering Action Plans
 ---------------------------------
 
-Administrator will be able to choose to run the `Action Plan`_ automaticaly
+Administrator will be able to choose to run the `Action Plan`_ automatically
 right after Watcher has run the `Audit`_.
 
 Limit Concurrent Actions
